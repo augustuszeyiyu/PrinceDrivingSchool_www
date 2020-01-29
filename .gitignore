@@ -1,0 +1,15 @@
+# OS dependent files
+.DS_Store
+Thumbs.db
+
+# IDE dependent files
+.idea
+.vs_code
+
+# Project dependent files
+/config.js
+/config.esm.js
+
+/.ig.*
+/.runtime
+/.kernel.bes
