@@ -7,9 +7,9 @@ import {HTTPCookies} from "jsboost/http-cookies.esm.js";
 import {Version} from "jsboost/version.esm.js";
 import {ParseURLPathDescriptor, PopURLPath} from "jsboost/web/uri-parser.esm.js"
 
-import {KernelInfo} from "/kernel-info.esm.js";
+import {KernelInfo, ProjectInfo} from "/kernel-info.esm.js";
 import {HTTPRequestRejectError, SystemError} from "/kernel/error.esm.js";
-import {ProjectConfig, Config} from "/kernel/config.esm.js";
+import {Config} from "/kernel/config.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
 
 import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
@@ -31,7 +31,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 		return;
 	}
 	
-	const proj_version = ProjectConfig.version;
+	const proj_version = ProjectInfo.version;
 	if ( Version.From(data_version).compare(proj_version) < 0 ) {
 		logger.error( `Data version is older than system version!` );
 		logger.error( `Please update your system using update tool!` );

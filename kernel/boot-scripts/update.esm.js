@@ -1,23 +1,15 @@
-/**
- *	Author: JCloudYu
- *	Create: 2019/06/26
-**/
 import fs from "fs";
-import path from "path";
 import {Version} from "jsboost/version.esm.js";
 
-import {KernelInfo, IsWindowsEnv} from "/kernel-info.esm.js";
+import {WorkingRoot, KernelInfo} from "/kernel-info.esm.js";
 
 
 
 (async()=>{
-	const __dirname = path.dirname((import.meta.url).substring(IsWindowsEnv ? 8 : 7));
-	
-	
 	let UpdateRuntime = null;
 	logger.info( "Trying to initialize update runtime environment..." );
 	try {
-		UpdateRuntime = await import("./update.runtime.esm.js");
+		UpdateRuntime = await import("/update/update.runtime.esm.js");
 	}
 	catch(e) {}
 	
@@ -40,7 +32,7 @@ import {KernelInfo, IsWindowsEnv} from "/kernel-info.esm.js";
 	
 	
  	// NOTE: Fetch update files
- 	const content_list = fs.readdirSync(`${__dirname}/updates`);
+ 	const content_list = fs.readdirSync(`${WorkingRoot}/update/updates`);
  	const versions = [];
  	for( const item of content_list ) {
  		if ( item === "." || item === ".." || item.substr(-7) !== ".esm.js" ) continue;
@@ -58,7 +50,7 @@ import {KernelInfo, IsWindowsEnv} from "/kernel-info.esm.js";
  	for( const version of versions ) {
  		if ( version.compare(system_version) <= 0 ) continue;
  		logger.log( `Updating to ${version._raw}...` );
- 		const {Update} = await import( `./updates/${version._raw}.esm.js` );
+ 		const {Update} = await import( `/update/updates/${version._raw}.esm.js` );
  		await Update(system_version);
  		KernelInfo.version = system_version = version._raw;
  		await KernelInfo.save();

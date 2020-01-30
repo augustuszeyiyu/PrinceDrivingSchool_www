@@ -1,7 +1,3 @@
-/**
- *	Author: JCloudYu
- *	Create: 2019/05/27
-**/
 import "extes";
 import "/kernel/logger.esm.js";
 import {ColorCode} from "/kernel/terminal-ctrl.esm.js";
@@ -11,12 +7,12 @@ import {ColorCode} from "/kernel/terminal-ctrl.esm.js";
 process
 .on( 'unhandledRejection', (rej)=>{
 	logger.error( `${ColorCode.LIGHT_RED}Receiving unhandled rejection! Exiting...${ColorCode.RESET}` );
-	logger.error(rej);
+	console.error(rej);
 	process.exit(1);
 })
 .on( 'uncaughtException', (e)=>{
 	logger.error(`${ColorCode.LIGHT_RED}Receiving uncaught exception! Exiting...${ColorCode.RESET}`);
-	logger.error(e);
+	console.error(e);
 	process.exit(1);
 })
 .on( 'SIGINT', (...args)=>{
@@ -36,28 +32,30 @@ process
 	const [,, boot_cmd] = process.argv;
 	
 	// NOTE: Collect information about current runtime environment
-	logger.info( `${ColorCode.DARK_GRAY}Obtaining kernel info...${ColorCode.RESET}` );
+	console.error( `${ColorCode.DARK_GRAY}Obtaining kernel info...${ColorCode.RESET}` );
 	await import('/kernel-info.esm.js').then(({Init})=>Init());
 	
 	// NOTE: Load environmental configurations
-	logger.info( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
+	console.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
 	await import( "/kernel/config.esm.js" ).then(({Init})=>Init());
 	
 	// NOTE: Load environmental configurations
-	logger.info( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
+	console.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
 	await import( "/kernel/runtime.esm.js" ).then(({Init})=>Init());
 
 	// NOTE: Boot system core
 	let boot_script = null;
 	switch( boot_cmd ) {
+		case "version":
+			boot_script = "/kernel/boot-scripts/version.esm.js";
+			break;
+	
 		case "update":
-			logger.info( `${ColorCode.DARK_GRAY}Booting updating system...${ColorCode.RESET}` );
-			boot_script = "/update/update.esm.js";
+			boot_script = "/kernel/boot-scripts/update.esm.js";
 			break;
 			
 		case "main":
 		default:
-			logger.info( `${ColorCode.DARK_GRAY}Booting main system...${ColorCode.RESET}` );
 			boot_script = "/index.esm.js";
 			break;
 	}

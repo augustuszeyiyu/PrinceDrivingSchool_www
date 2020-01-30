@@ -2,13 +2,7 @@
  *	Author: JCloudYu
  *	Create: 2019/05/27
 **/
-import fs from "fs";
-import {WorkingRoot} from "/kernel-info.esm.js";
-
-
-
 export const Config = Object.create(null);
-export const ProjectConfig = JSON.parse(fs.readFileSync( `${WorkingRoot}/package.json` ));
 
 export async function Init() {
 	// NOTE: Load default configurations

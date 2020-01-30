@@ -46,19 +46,19 @@ class LogInterface {
 		source.log(level, (''+message).split('\n').map((item)=>indention+item).join('\n'));
 	}
 	debug(message) {
-		this._log(LogLevel.DEBUG);
+		this._log(LogLevel.DEBUG, message);
 	}
 	log(message) {
-		this._log(LogLevel.INFO);
+		this._log(LogLevel.INFO, message);
 	}
 	info(message) {
-		this._log(LogLevel.INFO);
+		this._log(LogLevel.INFO, message);
 	}
 	warn(message) {
-		this._log(LogLevel.WARN);
+		this._log(LogLevel.WARN, message);
 	}
 	error(message) {
-		this._log(LogLevel.ERROR);
+		this._log(LogLevel.ERROR, message);
 	}
 	
 	
@@ -82,13 +82,6 @@ function CreateLogInterface({source, indent}) {
  * @global
  * @type {LogInterface}
 **/
-const logger = CreateLogInterface({
+const logger = global.logger = CreateLogInterface({
 	source:LogSource, indent:0
 });
-
-
-/**
- * @external NodeJS.Global
- * @property {LogInterface} logger
-**/
-global.logger = logger;

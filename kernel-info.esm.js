@@ -1,11 +1,9 @@
-/**
- *	Author: JCloudYu
- *	Create: 2020/01/09
-**/
 import fs from "fs";
 import os from "os";
 import path from "path";
 import {Beson} from "beson/beson.esm.js";
+
+const KernelArchVersion = "0.1.0";
 
 
 
@@ -13,6 +11,8 @@ import {Beson} from "beson/beson.esm.js";
 const IsWindowsEnv = os.platform().substring(0, 3) === "win";
 const WorkingRoot = path.dirname((import.meta.url).substring(IsWindowsEnv ? 8 : 7));
 const CmdArgs = process.argv.slice(3);
+
+
 
 const DATA = Object.assign(Object.create(null), {kernel_data:{}});
 const KERNEL_DATA_STORAGE = `${WorkingRoot}/.kernel.bes`;
@@ -59,13 +59,14 @@ const KernelInfo = new Proxy({}, {
 		}
 	}
 });
+const ProjectInfo = JSON.parse(fs.readFileSync(`${WorkingRoot}/package.json`));
 
 
 
 
 
 
-export {IsWindowsEnv, WorkingRoot, KernelInfo};
+export {IsWindowsEnv, WorkingRoot, KernelInfo, ProjectInfo, KernelArchVersion};
 export function Init() {
 	_load_kernel_data();
 }
