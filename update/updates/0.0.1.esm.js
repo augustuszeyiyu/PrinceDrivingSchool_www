@@ -1,3 +1,4 @@
-export async function Update(prev_version) {
-	// This script is intended to be empty to perform minimum version initialization
+export async function Update(prev_version, logger) {
+	// This script is purposed to do nothing...
+	logger.log("Basic system initialization...");
 }

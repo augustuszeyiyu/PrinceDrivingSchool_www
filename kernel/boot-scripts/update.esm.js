@@ -47,11 +47,12 @@ import {WorkingRoot, KernelInfo} from "/kernel-info.esm.js";
  	
  	// NOTE: Run update
  	const start_version = system_version;
+ 	const indented_logger = logger.indent();
  	for( const version of versions ) {
  		if ( version.compare(system_version) <= 0 ) continue;
  		logger.log( `Updating to ${version._raw}...` );
  		const {Update} = await import( `/update/updates/${version._raw}.esm.js` );
- 		await Update(system_version);
+ 		await Update(system_version, indented_logger);
  		KernelInfo.version = system_version = version._raw;
  		await KernelInfo.save();
  		logger.log( '' );
