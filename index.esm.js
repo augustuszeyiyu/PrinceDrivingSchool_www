@@ -12,7 +12,13 @@ import {HTTPRequestRejectError, SystemError} from "/kernel/error.esm.js";
 import {Config} from "/kernel/config.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
 
-import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
+import {
+	Init as InitRequestHandler,
+	CleanUp as CleanUpRequestHandler,
+	Handle as HandleRequest,
+	CanHandleAPI,
+	RequestPreprocessor
+} from "/handler/_.esm.js";
 
 
 
@@ -63,13 +69,8 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 	
 	
 	// NOTE: Initialize api modules
-	logger.info( `Initializing api handlers...` );
-	let promises = [];
-	for (const Handler of Object.values(Handlers)) {
-		if ( !Handler.Init ) continue;
-		promises.push(Handler.Init());
-	}
-	await Promise.wait(promises);
+	logger.info( `Initializing request handler...` );
+	await InitRequestHandler();
 	
 	
 
@@ -79,40 +80,33 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 		let api, {path, query, fragment} = ParseURLPathDescriptor( req.url||"/" );
 		([api, path] = PopURLPath(path));
 		
-		// NOTE: Detect api handler
-		const api_module = Handlers[api.substring(1).toLowerCase()];
-		if ( !api_module ) {
-			const error = new HTTPRequestRejectError(BaseError.RESOURCE_NOT_FOUND);
-			res.writeHead(error.httpStatus, {"Content-Type": "application/json"});
-			res.end(JSON.stringify(error));
-			return;
-		}
-		
 		
 		
 		// NOTE: Prepare session info and request info
 		const req_headers = req.headers;
 		const now = Date.now();
-		const meta = req.meta = {};
+		
 		req.info = {
 			cookies: HTTPCookies.FromRawCookies(req.headers['cookie']||''),
 			host: req_headers['x-forwarded-host']||req_headers['host']||null,
 			protocol: req_headers['x-forwarded-proto']||'http',
 			remote_ip: req_headers['x-real-ip']||req.socket.remoteAddress,
-			meta,
 			
+			endpoint: api,
 			url: { raw:req.url, path, query, fragment },
 			time: Math.floor(now/1000),
 			time_milli:now
 		};
+		req.meta = {};
 		req.session = {};
 		
 		
 		
 		// NOTE: Handle incoming request with corresponding handler
 		Promise.resolve()
-		.then(RequestPreprocessor)
-		.then(()=>api_module.Handle(req, res))
+		.then(()=>CanHandleAPI(req, res))
+		.then(()=>RequestPreprocessor(req, res))
+		.then(()=>HandleRequest(req, res))
 		.catch((err)=>{
 			if ( err instanceof Error ) {
 				if ( err instanceof SystemError ) {
@@ -199,13 +193,8 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 	process
 	.on( 'SIGNAL_INTERRUPTION', ()=>{})
 	.on( 'SIGNAL_TERMINATION', async()=>{
-		logger.info( `Cleaning up api handlers...` );
-		let promises = [];
-		for (const Handler of Object.values(Handlers)) {
-			if ( !Handler.CleanUp ) continue;
-			promises.push(Handler.CleanUp());
-		}
-		await Promise.wait(promises);
+		logger.info( `Cleaning up request handlers...` );
+		await CleanUpRequestHandler();
 		
 		
 		
