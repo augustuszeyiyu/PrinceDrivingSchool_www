@@ -11,5 +11,6 @@ Thumbs.db
 /config.esm.js
 
 /.ig.*
+/._ig.*
 /.runtime
 /.kernel.bes
