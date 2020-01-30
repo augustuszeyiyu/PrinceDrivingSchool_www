@@ -104,9 +104,11 @@ import {
 		
 		// NOTE: Handle incoming request with corresponding handler
 		Promise.resolve()
-		.then(()=>CanHandleAPI(req, res))
-		.then(()=>RequestPreprocessor(req, res))
-		.then(()=>HandleRequest(req, res))
+		.then(async()=>{
+			await CanHandleAPI(req, res);
+			await RequestPreprocessor(req, res);
+			await HandleRequest(req, res);
+		})
 		.catch((err)=>{
 			if ( err instanceof Error ) {
 				if ( err instanceof SystemError ) {
