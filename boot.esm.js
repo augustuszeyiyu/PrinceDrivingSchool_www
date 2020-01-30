@@ -3,19 +3,20 @@
  *	Create: 2019/05/27
 **/
 import "extes";
+import "/kernel/logger.esm.js";
 import {ColorCode} from "/kernel/terminal-ctrl.esm.js";
 
 
 
 process
 .on( 'unhandledRejection', (rej)=>{
-	console.error( `${ColorCode.LIGHT_RED}Receiving unhandled rejection! Exiting...${ColorCode.RESET}` );
-	console.error(rej);
+	logger.error( `${ColorCode.LIGHT_RED}Receiving unhandled rejection! Exiting...${ColorCode.RESET}` );
+	logger.error(rej);
 	process.exit(1);
 })
 .on( 'uncaughtException', (e)=>{
-	console.error(`${ColorCode.LIGHT_RED}Receiving uncaught exception! Exiting...${ColorCode.RESET}`);
-	console.error(e);
+	logger.error(`${ColorCode.LIGHT_RED}Receiving uncaught exception! Exiting...${ColorCode.RESET}`);
+	logger.error(e);
 	process.exit(1);
 })
 .on( 'SIGINT', (...args)=>{
@@ -35,28 +36,28 @@ process
 	const [,, boot_cmd] = process.argv;
 	
 	// NOTE: Collect information about current runtime environment
-	console.log( `${ColorCode.DARK_GRAY}Obtaining kernel info...${ColorCode.RESET}` );
+	logger.info( `${ColorCode.DARK_GRAY}Obtaining kernel info...${ColorCode.RESET}` );
 	await import('/kernel-info.esm.js').then(({Init})=>Init());
 	
 	// NOTE: Load environmental configurations
-	console.log( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
+	logger.info( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
 	await import( "/kernel/config.esm.js" ).then(({Init})=>Init());
 	
 	// NOTE: Load environmental configurations
-	console.log( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
+	logger.info( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
 	await import( "/kernel/runtime.esm.js" ).then(({Init})=>Init());
 
 	// NOTE: Boot system core
 	let boot_script = null;
 	switch( boot_cmd ) {
 		case "update":
-			console.log( `${ColorCode.DARK_GRAY}Booting updating system...${ColorCode.RESET}` );
+			logger.info( `${ColorCode.DARK_GRAY}Booting updating system...${ColorCode.RESET}` );
 			boot_script = "/update/update.esm.js";
 			break;
 			
 		case "main":
 		default:
-			console.log( `${ColorCode.DARK_GRAY}Booting main system...${ColorCode.RESET}` );
+			logger.info( `${ColorCode.DARK_GRAY}Booting main system...${ColorCode.RESET}` );
 			boot_script = "/index.esm.js";
 			break;
 	}

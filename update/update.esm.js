@@ -15,7 +15,7 @@ import {KernelInfo, IsWindowsEnv} from "/kernel-info.esm.js";
 	
 	
 	let UpdateRuntime = null;
-	console.info( "Trying to initialize update runtime environment..." );
+	logger.info( "Trying to initialize update runtime environment..." );
 	try {
 		UpdateRuntime = await import("./update.runtime.esm.js");
 	}
@@ -26,7 +26,7 @@ import {KernelInfo, IsWindowsEnv} from "/kernel-info.esm.js";
 			await UpdateRuntime.Init();
 		}
 		
-		console.info( "Application runtime environment initialized!" );
+		logger.info( "Application runtime environment initialized!" );
 	}
 	
 	
@@ -57,24 +57,24 @@ import {KernelInfo, IsWindowsEnv} from "/kernel-info.esm.js";
  	const start_version = system_version;
  	for( const version of versions ) {
  		if ( version.compare(system_version) <= 0 ) continue;
- 		console.log( `Updating to ${version._raw}...` );
+ 		logger.log( `Updating to ${version._raw}...` );
  		const {Update} = await import( `./updates/${version._raw}.esm.js` );
  		await Update(system_version);
  		KernelInfo.version = system_version = version._raw;
  		await KernelInfo.save();
- 		console.log( '' );
+ 		logger.log( '' );
  	}
  	
  	if (system_version === start_version) {
- 		console.log( `Nothing to update!` );
+ 		logger.log( `Nothing to update!` );
  	}
  	else {
- 		console.log( `Update finished! (${start_version} -> ${system_version})` );
+ 		logger.log( `Update finished! (${start_version} -> ${system_version})` );
  	}
  	
  	
  	if ( UpdateRuntime && UpdateRuntime.CleanUp ) {
-		console.info( `Cleaning up application runtime environment...` );
+		logger.info( `Cleaning up application runtime environment...` );
 		await UpdateRuntime.CleanUp();
 	}
 })()

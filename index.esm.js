@@ -25,16 +25,16 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 	// NOTE: Compare version to prevent incompatible versions between data and project
 	const data_version = KernelInfo.version;
 	if ( !data_version ) {
-		console.error( `System is not initialized yet!` );
-		console.error( `Please initialize your system via update tool!` );
+		logger.error( `System is not initialized yet!` );
+		logger.error( `Please initialize your system via update tool!` );
 		setTimeout(()=>process.exit(1));
 		return;
 	}
 	
 	const proj_version = ProjectConfig.version;
 	if ( Version.From(data_version).compare(proj_version) < 0 ) {
-		console.error( `Data version is older than system version!` );
-		console.error( `Please update your system using update tool!` );
+		logger.error( `Data version is older than system version!` );
+		logger.error( `Please update your system using update tool!` );
 		setTimeout(()=>process.exit(1));
 		return;
 	}
@@ -42,7 +42,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 	
 	
 	// NOTE: Initializing data source environment
-	console.info( "Trying to initialize application runtime environment..." );
+	logger.info( "Trying to initialize application runtime environment..." );
 	let AppRuntime = null;
 	try {
 		AppRuntime = await import("/index.runtime.esm.js");
@@ -54,7 +54,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 			await AppRuntime.Init();
 		}
 		
-		console.info( "Application runtime environment initialized!" );
+		logger.info( "Application runtime environment initialized!" );
 	}
 	
 	
@@ -63,7 +63,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 	
 	
 	// NOTE: Initialize api modules
-	console.info( `Initializing api handlers...` );
+	logger.info( `Initializing api handlers...` );
 	let promises = [];
 	for (const Handler of Object.values(Handlers)) {
 		if ( !Handler.Init ) continue;
@@ -74,7 +74,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 	
 
 	// NOTE: Create server
-	console.info( `Creating server instance...` );
+	logger.info( `Creating server instance...` );
 	const SERVER = http.createServer((req, res)=>{
 		let api, {path, query, fragment} = ParseURLPathDescriptor( req.url||"/" );
 		([api, path] = PopURLPath(path));
@@ -122,7 +122,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 					let error_stack = err.stack.trim().replace(/\r/g, '\n').split('\n');
 					error_stack = error_stack.map((item, idx)=>(idx===0?'':`${' '.repeat(8)}${item.trim().substring(3)}`)).join('\n');
 					
-					console.error(
+					logger.error(
 						'Unexpected system error has occurred!',
 						`    Error: ${err.message}`,
 						`    Detail: ${error_detail}`,
@@ -136,7 +136,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 					let error_stack = err.stack.trim().replace(/\r/g, '\n').split('\n');
 					error_stack = error_stack.map((item, idx)=>(idx===0?'':`${' '.repeat(8)}${item.trim().substring(3)}`)).join('\n');
 				
-					console.error(
+					logger.error(
 						`Unhandled rejection is received!`,
 						`    Error: ${err.message}`,
 						`    Stack: {${error_stack}\n${' '.repeat(4)}}`
@@ -149,7 +149,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 				}
 			}
 			else {
-				console.error( `Unknown error is received!`, err );
+				logger.error( `Unknown error is received!`, err );
 				err = new HTTPRequestRejectError(BaseError.UNEXPECTED_SERVER_ERROR, err);
 			}
 			
@@ -176,7 +176,7 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 	.on('error', (e) => {
 		if (e.code === 'EADDRINUSE') {
 			SERVER.close();
-			console.error( `Cannot bind server onto ${SERVER_INFO.host}:${SERVER_INFO.port}!` );
+			logger.error( `Cannot bind server onto ${SERVER_INFO.host}:${SERVER_INFO.port}!` );
 			setTimeout(()=>process.emit('SIGNAL_TERMINATION'));
 			return;
 		}
@@ -190,16 +190,16 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 	
 	
 	// NOTE: Start listening
-	console.info( `Binding server...` );
+	logger.info( `Binding server...` );
 	SERVER.listen(SERVER_INFO.port, SERVER_INFO.host, ()=>{
-		console.info( `Server is now listening at ${SERVER_INFO.host}:${SERVER_INFO.port}...` );
+		logger.info( `Server is now listening at ${SERVER_INFO.host}:${SERVER_INFO.port}...` );
 	});
 	
 	
 	process
 	.on( 'SIGNAL_INTERRUPTION', ()=>{})
 	.on( 'SIGNAL_TERMINATION', async()=>{
-		console.info( `Cleaning up api handlers...` );
+		logger.info( `Cleaning up api handlers...` );
 		let promises = [];
 		for (const Handler of Object.values(Handlers)) {
 			if ( !Handler.CleanUp ) continue;
@@ -210,19 +210,19 @@ import {default as Handlers, RequestPreprocessor} from "/handler/_.esm.js";
 		
 		
 		if ( AppRuntime && AppRuntime.CleanUp ) {
-			console.info( `Cleaning up application runtime environment...` );
+			logger.info( `Cleaning up application runtime environment...` );
 			await AppRuntime.CleanUp();
 		}
 		
 		
 		
 		if ( SERVER.listening ) {
-			console.info( `Terminating server...` );
+			logger.info( `Terminating server...` );
 			SERVER.close();
 		}
 		
 		
-		console.info( `Exiting...` );
+		logger.info( `Exiting...` );
 		setTimeout(()=>process.exit(1));
 	});
 })().catch((e)=>setTimeout(()=>{throw e}));
