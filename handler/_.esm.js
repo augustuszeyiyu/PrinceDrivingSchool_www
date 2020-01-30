@@ -2,49 +2,25 @@
  *	Author: JCloudYu
  *	Create: 2019/07/16
 **/
-import {HTTPRequestRejectError} from "/kernel/error.esm.js";
-import {BaseError} from "/lib/error/base-error.esm.js";
+import {Config} from "/kernel/config.esm.js";
 
-import * as VersionAPI from "./version.esm.js";
-
-
-
-const APIHandlers = {
-	version: VersionAPI
-};
+import {Handle as HandleTmplScriptingViewRequest} from "./tmpl-scripting-view.esm.js";
+import {Handle as HandleStaticViewRequest} from "./static-view.esm.js";
 
 
 
-export async function Init() {
-	const promises = [];
-	for(const handler of Object.values(APIHandlers)) {
-		if ( handler.Init ) {
-			promises.push(handler.Init());
-		}
-	}
-	await Promise.wait(promises);
-}
-export async function CleanUp() {
-	const promises = [];
-	for(const handler of Object.values(APIHandlers)) {
-		if ( handler.CleanUp ) {
-			promises.push(handler.CleanUp());
-		}
-	}
-	await Promise.wait(promises);
-}
-export function CanHandleAPI(req, res) {
-	const {endpoint:api} = req.info;
-
-	// NOTE: Detect api handler
-	const api_module = APIHandlers[api.substring(1).toLowerCase()];
-	if ( !api_module ) {
-		throw new HTTPRequestRejectError(BaseError.RESOURCE_NOT_FOUND);
-	}
-}
+export async function Init() {}
+export async function CleanUp() {}
+export function CanHandleAPI(req, res) {}
 export function RequestPreprocessor(req, res) {}
 export function Handle(req, res) {
-	const {endpoint:api} = req.info;
-	const api_module = APIHandlers[api.substring(1).toLowerCase()];
-	return api_module.Handle(req, res);
+	const {endpoint, url} = req.info;
+	url.path = endpoint + url.path;
+	
+	if ( Config.server.routes.indexOf(endpoint) >= 0 ) {
+		return HandleStaticViewRequest(req, res);
+	}
+	else {
+		return HandleTmplScriptingViewRequest(req, res);
+	}
 }
