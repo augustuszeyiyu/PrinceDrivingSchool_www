@@ -4,10 +4,9 @@
 **/
 import http from "http";
 import {HTTPCookies} from "jsboost/http-cookies.esm.js";
-import {Version} from "jsboost/version.esm.js";
 import {ParseURLPathDescriptor, PopURLPath} from "jsboost/web/uri-parser.esm.js"
 
-import {KernelInfo, ProjectInfo} from "/kernel-info.esm.js";
+import {CheckDataSystemVersion} from "/kernel-info.esm.js";
 import {HTTPRequestRejectError, SystemError} from "/kernel/error.esm.js";
 import {Config} from "/kernel/config.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
@@ -29,21 +28,7 @@ import {
 	const {server:SERVER_INFO} = Config;
 	
 	// NOTE: Compare version to prevent incompatible versions between data and project
-	const data_version = KernelInfo.version;
-	if ( !data_version ) {
-		logger.error( `System is not initialized yet!` );
-		logger.error( `Please initialize your system via update tool!` );
-		setTimeout(()=>process.exit(1));
-		return;
-	}
-	
-	const proj_version = ProjectInfo.version;
-	if ( Version.From(data_version).compare(proj_version) < 0 ) {
-		logger.error( `Data version is older than system version!` );
-		logger.error( `Please update your system using update tool!` );
-		setTimeout(()=>process.exit(1));
-		return;
-	}
+	if ( !CheckDataSystemVersion() ) return;
 	
 	
 	

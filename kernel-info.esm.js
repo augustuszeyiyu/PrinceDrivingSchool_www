@@ -2,8 +2,9 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import {Beson} from "beson/beson.esm.js";
+import {Version} from "jsboost/version.esm.js";
 
-const KernelArchVersion = "0.1.3";
+const KernelArchVersion = "0.1.4";
 
 
 
@@ -69,4 +70,29 @@ const ProjectInfo = JSON.parse(fs.readFileSync(`${WorkingRoot}/package.json`));
 export {IsWindowsEnv, WorkingRoot, KernelInfo, ProjectInfo, KernelArchVersion};
 export function Init() {
 	_load_kernel_data();
+}
+export function CheckDataSystemVersion(auto_exit=true, verbose=true) {
+	const {version:data_version} = DATA.kernel_data;
+	if ( !data_version ) {
+		if ( verbose ) {
+			logger.error( `System is not initialized yet!` );
+			logger.error( `Please initialize your system via update tool!` );
+		}
+		
+		if ( auto_exit ) setTimeout(()=>process.exit(1));
+		return false;
+	}
+	
+	const proj_version = ProjectInfo.version;
+	if ( Version.From(data_version).compare(proj_version) < 0 ) {
+		if ( verbose ) {
+			logger.error( `Data version is older than system version!` );
+			logger.error( `Please update your system using update tool!` );
+		}
+		
+		if ( auto_exit ) setTimeout(()=>process.exit(1));
+		return false;
+	}
+	
+	return true;
 }

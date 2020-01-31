@@ -39,15 +39,15 @@ const DEFAULT_BOOT_MAP = {
 	const [,, boot_cmd=''] = process.argv;
 	
 	// INFO: Collect information about current runtime environment
-	logger.error( `${ColorCode.DARK_GRAY}Obtaining kernel info...${ColorCode.RESET}` );
+	console.error( `${ColorCode.DARK_GRAY}Obtaining kernel info...${ColorCode.RESET}` );
 	const ProjectInfo = await import('/kernel-info.esm.js').then(async({Init, ProjectInfo})=>{await Init(); return ProjectInfo;});
 	
 	// INFO: Load environmental configurations
-	logger.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
+	console.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
 	await import( "/kernel/config.esm.js" ).then(({Init})=>Init());
 	
 	// INFO: Load environmental configurations
-	logger.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
+	console.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
 	await import( "/kernel/runtime.esm.js" ).then(({Init})=>Init());
 	
 	
@@ -56,7 +56,7 @@ const DEFAULT_BOOT_MAP = {
 	const boot_map = Object.assign({}, ProjectInfo.kernel_script_map||{}, DEFAULT_BOOT_MAP);
 	const boot_script = boot_map[boot_cmd];
 	if ( !boot_script ) {
-		logger.error( `${ColorCode.RED}Invalid command \`${boot_cmd}\`!${ColorCode.RESET}` );
+		console.error( `${ColorCode.RED}Invalid command \`${boot_cmd}\`!${ColorCode.RESET}` );
 		process.exit(1);
 		return;
 	}
