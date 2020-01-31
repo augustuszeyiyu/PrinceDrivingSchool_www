@@ -24,42 +24,42 @@ process
 
 
 
+const DEFAULT_BOOT_MAP = {
+	"": "/index.esm.js",
+	main: "/index.esm.js",
+	version: "/kernel/boot-scripts/version.esm.js",
+	update: "/kernel/boot-scripts/update.esm.js"
+};
+
 (async()=>{
-	// NOTE: Idle everything to hoist warning verbose
+	// INFO: Idle everything to hoist warning verbose
 	await setTimeout.idle(100);
 	
-	// NOTE: Decide boot script
-	const [,, boot_cmd] = process.argv;
+	// INFO: Decide boot script
+	const [,, boot_cmd=''] = process.argv;
 	
-	// NOTE: Collect information about current runtime environment
-	console.error( `${ColorCode.DARK_GRAY}Obtaining kernel info...${ColorCode.RESET}` );
-	await import('/kernel-info.esm.js').then(({Init})=>Init());
+	// INFO: Collect information about current runtime environment
+	logger.error( `${ColorCode.DARK_GRAY}Obtaining kernel info...${ColorCode.RESET}` );
+	const ProjectInfo = await import('/kernel-info.esm.js').then(async({Init, ProjectInfo})=>{await Init(); return ProjectInfo;});
 	
-	// NOTE: Load environmental configurations
-	console.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
+	// INFO: Load environmental configurations
+	logger.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
 	await import( "/kernel/config.esm.js" ).then(({Init})=>Init());
 	
-	// NOTE: Load environmental configurations
-	console.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
+	// INFO: Load environmental configurations
+	logger.error( `${ColorCode.DARK_GRAY}Loading configurations...${ColorCode.RESET}` );
 	await import( "/kernel/runtime.esm.js" ).then(({Init})=>Init());
-
-	// NOTE: Boot system core
-	let boot_script = null;
-	switch( boot_cmd ) {
-		case "version":
-			boot_script = "/kernel/boot-scripts/version.esm.js";
-			break;
 	
-		case "update":
-			boot_script = "/kernel/boot-scripts/update.esm.js";
-			break;
-			
-		case "main":
-		default:
-			boot_script = "/index.esm.js";
-			break;
+	
+	
+	// INFO: Detect boot script
+	const boot_map = Object.assign({}, ProjectInfo.kernel_script_map||{}, DEFAULT_BOOT_MAP);
+	const boot_script = boot_map[boot_cmd];
+	if ( !boot_script ) {
+		logger.error( `${ColorCode.RED}Invalid command \`${boot_cmd}\`!${ColorCode.RESET}` );
+		process.exit(1);
+		return;
 	}
-	
 	
 	await import(boot_script);
 })()
