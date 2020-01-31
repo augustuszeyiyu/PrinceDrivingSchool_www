@@ -119,9 +119,9 @@ import {
 					error_stack = error_stack.map((item, idx)=>(idx===0?'':`${' '.repeat(8)}${item.trim().substring(3)}`)).join('\n');
 					
 					logger.error(
-						'Unexpected system error has occurred!',
-						`    Error: ${err.message}`,
-						`    Detail: ${error_detail}`,
+						'Unexpected system error has occurred!\n' +
+						`    Error: ${err.message}\n` +
+						`    Detail: ${error_detail}\n` +
 						`    Stack: {${error_stack}\n${' '.repeat(4)}}`
 					);
 				
@@ -133,8 +133,8 @@ import {
 					error_stack = error_stack.map((item, idx)=>(idx===0?'':`${' '.repeat(8)}${item.trim().substring(3)}`)).join('\n');
 				
 					logger.error(
-						`Unhandled rejection is received!`,
-						`    Error: ${err.message}`,
+						`Unhandled rejection is received!\n` +
+						`    Error: ${err.message}\n` +
 						`    Stack: {${error_stack}\n${' '.repeat(4)}}`
 					);
 					

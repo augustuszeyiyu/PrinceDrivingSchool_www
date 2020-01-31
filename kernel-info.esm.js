@@ -3,7 +3,7 @@ import os from "os";
 import path from "path";
 import {Beson} from "beson/beson.esm.js";
 
-const KernelArchVersion = "0.1.1";
+const KernelArchVersion = "0.1.2";
 
 
 
