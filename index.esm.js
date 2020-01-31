@@ -151,7 +151,7 @@ import {
 			
 			
 			
-			if ( res.finished ) return;
+			if ( res.writableFinished||res.finished ) return;
 			
 			const headers = Object.assign({}, err.headers||{}, {"Content-Type":"application/json"});
 			res.writeHead(err.httpStatus, headers);
