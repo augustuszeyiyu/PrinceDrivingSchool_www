@@ -4,7 +4,7 @@ import path from "path";
 import {Beson} from "beson/beson.esm.js";
 import {Version} from "jsboost/version.esm.js";
 
-const KernelArchVersion = "0.1.4";
+const KernelArchVersion = "0.1.5";
 
 
 
