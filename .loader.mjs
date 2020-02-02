@@ -15,7 +15,6 @@
  *	ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  *	OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 **/
-
 /**
  *	Version: 1.0.1
  *	Author: JCloudYu
@@ -45,16 +44,13 @@
  *		then the path will be prefixed with ./ and use the condition 3 to process the path
 **/
 // Source: https://gist.github.com/JCloudYu/87b4a5caff65320557452167e3466dbb
-
 import process from 'process';
 import os from 'os';
+import fs from 'fs';
 
 
 // ES Modules' identifier is renamed into 'module' after NodeJS v12
 const [NJS_MAJOR] = process.versions.node.split('.');
-const ESM_IDENTIFIER = (NJS_MAJOR >= 12) ? 'module' : 'esm';
-const CJM_IDENTIFIER = (NJS_MAJOR >= 12) ? 'commonjs' : 'cjs';
-
 const NODE_JS_STYLED_MODULE_ROOT = true;
 const IS_WINDOWS = (os.platform().substring(0,3) === "win");
 const IS_WIN_ABSOLUTE_PATH = /^[a-zA-Z]:\/[^/].*$/;
@@ -64,7 +60,51 @@ const PATHS = [
 	null,	// Reserved for main module path
 	`file://${IS_WINDOWS?'/':''}${process.cwd()}/`
 ];
+const NJS_IDENTIFIER_MAP = {
+	esm: NJS_MAJOR >= 12 ? 'module' : 'esm',
+	cjs: NJS_MAJOR >= 12 ? 'commonjs' : 'cjs',
+	wasm: NJS_MAJOR >= 12 ? 'wasm': false
+};
+const DEFAULT_MAP = {
+	".esm.js":	"esm",
+	".mjs":		"esm",
+	".js":		"cjs",
+	".wasm":	"wasm"
+};
+const EXT_MAP = NormalizeId(Object.assign({}, DEFAULT_MAP));
 
+
+
+
+
+function NormalizeId(map) {
+	for(const idx in map) {
+		const id = map[idx];
+		const mapped_id = NJS_IDENTIFIER_MAP[id];
+		if ( mapped_id === false ) {
+			delete map[idx];
+			continue;
+		}
+		if ( !mapped_id ) continue;
+		
+		
+		
+		map[idx] = mapped_id;
+	}
+	
+	return map;
+}
+function LoadPackageExtMap(package_path) {
+	try {
+		package_path = package_path.substring(IS_WINDOWS ? 8 : 7);
+	
+		let {kernel_ext_type_map} = JSON.parse(fs.readFileSync(package_path));
+		if (Object(kernel_ext_type_map) === kernel_ext_type_map) {
+			NormalizeId(Object.assign(EXT_MAP, kernel_ext_type_map, DEFAULT_MAP));
+		}
+	}
+	catch(e) {}
+}
 export function resolve(specifier, parentModuleURL, defaultResolve) {
 	// This specifier must be the main module with absolute path! (Without leading file://)
 	if ( parentModuleURL === undefined ) {
@@ -81,26 +121,21 @@ export function resolve(specifier, parentModuleURL, defaultResolve) {
 		const DIVIDER_POS = _MAIN_MODULE_PATH.lastIndexOf('/')+1;
 		PATHS[0] = _MAIN_MODULE_PATH.substring(0, DIVIDER_POS);
 		specifier = `./${_MAIN_MODULE_PATH.substring(DIVIDER_POS)}`;
+		
+		
+		
+		LoadPackageExtMap(`${PATHS[0]}package.json`);
 	}
 	
 	
 	
 	// NOTE: Resolve the module type
 	let _resolved_type = null;
-	if ( specifier.substr(-7) === ".esm.js" ) {
-		_resolved_type = ESM_IDENTIFIER;
-	}
-	else
-	if ( specifier.substr(-4) === ".mjs" ) {
-		_resolved_type = ESM_IDENTIFIER;
-	}
-	else
-	if ( specifier.substr(-3) === ".js" ) {
-		_resolved_type = CJM_IDENTIFIER;
-	}
-	else
-	if ( NJS_MAJOR >= 12 && specifier.substr(-5) === ".wasm" ) {
-		_resolved_type = "wasm";
+	for (let idx in EXT_MAP) {
+		if ( specifier.substr(-idx.length) === idx ) {
+			_resolved_type = EXT_MAP[idx];
+			break;
+		}
 	}
 	
 	

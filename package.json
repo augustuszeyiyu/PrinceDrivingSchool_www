@@ -8,6 +8,7 @@
 		"start": "node boot.js"
 	},
 	"kernel_script_map": {},
+	"kernel_ext_type_map": {},
 	"keywords": [],
 	"author": "JCloudYu",
 	"license": "UNLICENSED",
