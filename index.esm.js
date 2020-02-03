@@ -7,14 +7,13 @@ import {HTTPCookies} from "jsboost/http-cookies.esm.js";
 import {ParseURLPathDescriptor, PopURLPath} from "jsboost/web/uri-parser.esm.js"
 
 import {CheckDataSystemVersion} from "/kernel-info.esm.js";
-import {HTTPRequestRejectError, SystemError} from "/kernel/error.esm.js";
 import {Config} from "/kernel/config.esm.js";
-import {BaseError} from "/lib/error/base-error.esm.js";
 
 import {
 	Init as InitRequestHandler,
 	CleanUp as CleanUpRequestHandler,
 	Handle as HandleRequest,
+	HandleSystemError,
 	CanHandleAPI,
 	RequestPreprocessor
 } from "/handler/_.esm.js";
@@ -94,54 +93,7 @@ import {
 			await RequestPreprocessor(req, res);
 			await HandleRequest(req, res);
 		})
-		.catch((err)=>{
-			if ( err instanceof Error ) {
-				if ( err instanceof SystemError ) {
-					let error_detail = JSON.stringify(err, null, 4).replace(/\r\n/g, '\n').split('\n');
-					error_detail = error_detail.map((item, idx)=>(idx===0?item:`${' '.repeat(4)}${item}`)).join('\n');
-				
-					let error_stack = err.stack.trim().replace(/\r/g, '\n').split('\n');
-					error_stack = error_stack.map((item, idx)=>(idx===0?'':`${' '.repeat(8)}${item.trim().substring(3)}`)).join('\n');
-					
-					logger.error(
-						'Unexpected system error has occurred!\n' +
-						`    Error: ${err.message}\n` +
-						`    Detail: ${error_detail}\n` +
-						`    Stack: {${error_stack}\n${' '.repeat(4)}}`
-					);
-				
-					err = new HTTPRequestRejectError(BaseError.UNEXPECTED_SERVER_ERROR);
-				}
-				else
-				if ( !(err instanceof HTTPRequestRejectError) ) {
-					let error_stack = err.stack.trim().replace(/\r/g, '\n').split('\n');
-					error_stack = error_stack.map((item, idx)=>(idx===0?'':`${' '.repeat(8)}${item.trim().substring(3)}`)).join('\n');
-				
-					logger.error(
-						`Unhandled rejection is received!\n` +
-						`    Error: ${err.message}\n` +
-						`    Stack: {${error_stack}\n${' '.repeat(4)}}`
-					);
-					
-					err = new HTTPRequestRejectError(BaseError.UNEXPECTED_SERVER_ERROR, {
-						message: err.message,
-						stack: err.stack.split('\n')
-					});
-				}
-			}
-			else {
-				logger.error( `Unknown error is received!`, err );
-				err = new HTTPRequestRejectError(BaseError.UNEXPECTED_SERVER_ERROR, err);
-			}
-			
-			
-			
-			if ( res.writableFinished||res.finished ) return;
-			
-			const headers = Object.assign({}, err.headers||{}, {"Content-Type":"application/json"});
-			res.writeHead(err.httpStatus, headers);
-			res.end(JSON.stringify(err));
-		})
+		.catch((err)=>HandleSystemError(req, res, err))
 		.finally(async()=>{
 			if ( req.readable ) {
 				await ((input_stream)=>new Promise((resolve, reject)=>{
