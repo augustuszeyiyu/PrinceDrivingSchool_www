@@ -6,15 +6,14 @@ import {HTTPRequestRejectError, SystemError} from "/kernel/error.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
 
 import * as VersionAPI from "./version.esm.js";
+import {PopURLPath} from "jsboost/web/uri-parser.esm.js";
+import {HTTPCookies} from "jsboost/http-cookies.esm.js";
 
 
 
 const APIHandlers = {
 	version: VersionAPI
 };
-
-
-
 export async function Init() {
 	const promises = [];
 	for(const handler of Object.values(APIHandlers)) {
@@ -32,21 +31,6 @@ export async function CleanUp() {
 		}
 	}
 	await Promise.wait(promises);
-}
-export function CanHandleAPI(req, res) {
-	const {endpoint:api} = req.info;
-
-	// NOTE: Detect api handler
-	const api_module = APIHandlers[api.substring(1).toLowerCase()];
-	if ( !api_module ) {
-		throw new HTTPRequestRejectError(BaseError.RESOURCE_NOT_FOUND);
-	}
-}
-export function RequestPreprocessor(req, res) {}
-export function Handle(req, res) {
-	const {endpoint:api} = req.info;
-	const api_module = APIHandlers[api.substring(1).toLowerCase()];
-	return api_module.Handle(req, res);
 }
 export function HandleSystemError(req, res, error) {
 	if ( error instanceof Error ) {
@@ -96,3 +80,23 @@ export function HandleSystemError(req, res, error) {
 	res.writeHead(error.httpStatus, headers);
 	res.end(JSON.stringify(error));
 }
+export const Handle = Function.sequentialExecutor.async.spread([
+	function(req, res) {
+		req.session = {};
+		req.meta = {};
+		req.info.cookies = HTTPCookies.FromRawCookies(req.headers['cookies']||'');
+	},
+	function(req, res) {
+		const {url} = req.info;
+		const [api, remained] = PopURLPath(url.path);
+		url.path = remained;
+		
+		// INFO: Detect if the api handler is registered
+		const api_module = APIHandlers[api.substring(1).toLowerCase()];
+		if ( !api_module ) {
+			throw new HTTPRequestRejectError(BaseError.RESOURCE_NOT_FOUND);
+		}
+		
+		return api_module.Handle(req, res);
+	}
+]);
