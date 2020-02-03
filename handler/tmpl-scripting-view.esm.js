@@ -60,8 +60,8 @@ export async function Handle(req, res) {
 	}
 	
 	
-	req.info.url.path = matched_path;
-	req.info.url.arg_path = remained_path;
+	req.info.url.path = remained_path;
+	req.info.url.script_path = matched_path;
 	
 	
 	const {default:handler} = await import(script_root + matched_path);
