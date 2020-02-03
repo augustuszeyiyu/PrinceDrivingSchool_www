@@ -14,71 +14,60 @@ import {WorkingRoot} from "/kernel-info.esm.js";
 
 
 export async function Handle(req, res) {
-	let targetURL = decodeURIComponent(req.info.url.path||'');
+	const script_root = PurgeRelativePath(Config.server.script_root);
+	const target_url = PurgeRelativePath(decodeURIComponent(req.info.url.path||''));
 	
+	let matched_path = null, remained_path = '', candidate_base = target_url;
+	while(candidate_base !== "") {
+		const [left_over, comp] = ShiftURLPath(candidate_base);
+		candidate_base = left_over;
+		
+		
 	
-	
-	if ( targetURL[0] !== "/" ) { targetURL = `/${targetURL}`; }
-	targetURL = PurgeRelativePath(`${Config.server.script_root}${targetURL}`);
-	
-	
-	
-	let matched_path = null, remained_path = '', test_url = targetURL;
-	let handler = null;
-	while(test_url !== "") {
-		// NOTE: Make the url be a full path from document root
-		matched_path = test_url;
-		if ( matched_path.substr(-1) === "/" ) {
-			matched_path = matched_path + 'index';
+		const candidates = [];
+		candidates.unshift(`/index.mjs`);
+		
+		if (comp !== "/") {
+			candidates.unshift(`${comp}.mjs`);
 		}
 		
-		matched_path += ".mjs";
 		
 		
-		
-		// INFO: Test if path exists
-		try {
-			const state = await (new Promise((resolve, reject)=>{
-				fs.stat(WorkingRoot + matched_path, (err, states)=>{
-					if ( err ) {
-						reject(err);
-					}
-					else {
-						resolve(states);
-					}
-				});
-			}));
-			
-			if ( !state.isFile() ) {
-				const err = new Error("");
-				err.code = "ENOENT";
-				throw err;
+		// Search for scripts
+		for ( const candidate of candidates ) {
+			try {
+				const candidate_path = candidate_base + candidate;
+				const test_path = WorkingRoot + script_root + candidate_path;
+				const stat = fs.statSync(test_path);
+				if ( !stat.isFile() ) continue;
+				
+				matched_path = candidate_path;
+				break;
 			}
-		}
-		catch(e) {
-			if ( e.code !== "ENOENT" ) { throw e; }
-			matched_path = null;
+			catch(e) { continue; }
 		}
 		
-		
-		// INFO: Obtain script
-		if ( matched_path ) {
-			({default:handler} = await import(matched_path));
-			break;
-		}
+		// Obtain module
+		if ( matched_path ) break;
 		
 		
 		
-		const url_parts = ShiftURLPath(test_url);
-		test_url = url_parts[0];
-		remained_path = url_parts[1] + remained_path;
+		remained_path = comp + remained_path;
 	}
 	
-	if ( !handler ) {
+	if ( !matched_path ) {
 		throw new HTTPRequestRejectError(BaseError.RESOURCE_NOT_FOUND);
 	}
 	
 	
-	req.info.url.path = remained_path;
+	req.info.url.path = matched_path;
+	req.info.url.arg_path = remained_path;
+	
+	
+	const {default:handler} = await import(script_root + matched_path);
+	if ( typeof handler !== "function" ) {
+		throw new HTTPRequestRejectError(BaseError.UNEXPECTED_SERVER_ERROR);
+	}
+	
 	return handler(req, res);
 }
