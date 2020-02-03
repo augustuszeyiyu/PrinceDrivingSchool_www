@@ -5,7 +5,7 @@
 import fs from "fs";
 import {PurgeRelativePath, ShiftURLPath} from "jsboost/web/uri-parser.esm.js";
 
-import {BaseError} from "/lib/error.esm.js";
+import {BaseError} from "/lib/error/base-error.esm.js";
 import {HTTPRequestRejectError} from "/kernel/error.esm.js";
 import {Config} from "/kernel/config.esm.js";
 import {WorkingRoot} from "/kernel-info.esm.js";
