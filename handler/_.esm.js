@@ -2,6 +2,9 @@
  *	Author: JCloudYu
  *	Create: 2019/07/16
 **/
+import {PopURLPath} from "jsboost/web/uri-parser.esm.js";
+import {HTTPCookies} from "jsboost/http-cookies.esm.js";
+
 import {HTTPRequestRejectError, SystemError} from "/kernel/error.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
 import {Config} from "/kernel/config.esm.js";
@@ -13,19 +16,6 @@ import {Handle as HandleStaticViewRequest} from "./static-view.esm.js";
 
 export async function Init() {}
 export async function CleanUp() {}
-export function CanHandleAPI(req, res) {}
-export function RequestPreprocessor(req, res) {}
-export function Handle(req, res) {
-	const {endpoint, url} = req.info;
-	url.path = endpoint + url.path;
-	
-	if ( Config.server.routes.indexOf(endpoint) >= 0 ) {
-		return HandleStaticViewRequest(req, res);
-	}
-	else {
-		return HandleTmplScriptingViewRequest(req, res);
-	}
-}
 export function HandleSystemError(req, res, error) {
 	if ( error instanceof Error ) {
 		if ( error instanceof SystemError ) {
@@ -74,3 +64,23 @@ export function HandleSystemError(req, res, error) {
 	res.writeHead(error.httpStatus, headers);
 	res.end(JSON.stringify(error));
 }
+export const Handle = Function.sequentialExecutor.async.spread([
+	function(req, res) {
+		req.session = {};
+		req.meta = {};
+		req.info.cookies = HTTPCookies.FromRawCookies(req.headers['cookies']||'');
+	},
+	function(req, res) {
+		const {url} = req.info;
+		const [api] = PopURLPath(url.path);
+		
+		
+		
+		if ( Config.server.routes.indexOf(api) >= 0 ) {
+			return HandleStaticViewRequest(req, res);
+		}
+		else {
+			return HandleTmplScriptingViewRequest(req, res);
+		}
+	}
+]);

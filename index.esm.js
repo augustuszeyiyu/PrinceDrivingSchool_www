@@ -3,8 +3,7 @@
  *	Create: 2019/05/27
 **/
 import http from "http";
-import {HTTPCookies} from "jsboost/http-cookies.esm.js";
-import {ParseURLPathDescriptor, PopURLPath} from "jsboost/web/uri-parser.esm.js"
+import {ParseURLPathDescriptor} from "jsboost/web/uri-parser.esm.js"
 
 import {CheckDataSystemVersion} from "/kernel-info.esm.js";
 import {Config} from "/kernel/config.esm.js";
@@ -13,9 +12,7 @@ import {
 	Init as InitRequestHandler,
 	CleanUp as CleanUpRequestHandler,
 	Handle as HandleRequest,
-	HandleSystemError,
-	CanHandleAPI,
-	RequestPreprocessor
+	HandleSystemError
 } from "/handler/_.esm.js";
 
 
@@ -61,38 +58,34 @@ import {
 	// NOTE: Create server
 	logger.info( `Creating server instance...` );
 	const SERVER = http.createServer((req, res)=>{
-		let api, {path, query, fragment} = ParseURLPathDescriptor( req.url||"/" );
-		([api, path] = PopURLPath(path));
+		let {path, query, fragment} = ParseURLPathDescriptor(req.url||"/");
 		
 		
+		// INFO: Resolve current request's information
+		{
+			const req_headers = req.headers;
+			const now = Date.now();
 		
-		// NOTE: Prepare session info and request info
-		const req_headers = req.headers;
-		const now = Date.now();
-		
-		req.info = {
-			cookies: HTTPCookies.FromRawCookies(req.headers['cookie']||''),
-			host: req_headers['x-forwarded-host']||req_headers['host']||null,
-			protocol: req_headers['x-forwarded-proto']||'http',
-			remote_ip: req_headers['x-real-ip']||req.socket.remoteAddress,
-			
-			endpoint: api,
-			url: { raw:req.url, path, query, fragment },
-			time: Math.floor(now/1000),
-			time_milli:now
-		};
-		req.meta = {};
-		req.session = {};
+			Object.defineProperty(req, 'info', {
+				configurable:false, writable:false, enumerable:true,
+				value: Object.assignConstants({}, {
+					host: req_headers['x-forwarded-host']||req_headers['host']||null,
+					protocol: req_headers['x-forwarded-proto']||'http',
+					remote_ip: req_headers['x-real-ip']||req.socket.remoteAddress,
+					
+					// Note that the req.url is able to be manipulated
+					url: { raw:req.url, path, query, fragment },
+					time: Math.floor(now/1000),
+					time_milli:now
+				})
+			});
+		}
 		
 		
 		
 		// NOTE: Handle incoming request with corresponding handler
 		Promise.resolve()
-		.then(async()=>{
-			await CanHandleAPI(req, res);
-			await RequestPreprocessor(req, res);
-			await HandleRequest(req, res);
-		})
+		.then(()=>HandleRequest(req, res))
 		.catch((err)=>HandleSystemError(req, res, err))
 		.finally(async()=>{
 			if ( req.readable ) {
