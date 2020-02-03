@@ -4,8 +4,20 @@ import path from "path";
 import {Beson} from "beson/beson.esm.js";
 import {Version} from "jsboost/version.esm.js";
 
-const KernelArchVersion = "0.9.0";
 
+// Arch kernel - https://github.com/JCloudYu/node.prototype.kernel/
+const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "0.9.1"}];
+
+// other application arch type can add additional versions like following line
+// KernelArchVersion.push({identifier: "other_arch_versions", version: "0.9.0"});
+
+
+
+
+
+// INFO: Freeze KernelArchVersion to prevent further modifications
+for(const item of KernelArchVersion) { Object.freeze(item); }
+Object.freeze(KernelArchVersion);
 
 
 // INFO: Prepare environmental information
