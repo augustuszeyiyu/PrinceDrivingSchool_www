@@ -24,24 +24,25 @@ export async function Handle(req, res) {
 		
 		
 	
-		const candidates = [];
-		candidates.unshift(`/index.mjs`);
-		
-		if (comp !== "/") {
-			candidates.unshift(`${comp}.mjs`);
-		}
+		const candidates = [comp, '/index'];
 		
 		
 		
 		// Search for scripts
-		for ( const candidate of candidates ) {
+		for ( let index=0; index<candidates.length; index++ ) {
+			const candidate = candidates[index];
+			if ( candidate === "/" || "" )  continue;
+		
 			try {
-				const candidate_path = candidate_base + candidate;
+				const candidate_path = candidate_base + candidate + '.mjs';
 				const test_path = WorkingRoot + script_root + candidate_path;
 				const stat = fs.statSync(test_path);
 				if ( !stat.isFile() ) continue;
 				
 				matched_path = candidate_path;
+				if ( index > 0 ) {
+					remained_path = candidates[0] + remained_path;
+				}
 				break;
 			}
 			catch(e) { continue; }
@@ -58,8 +59,7 @@ export async function Handle(req, res) {
 	if ( !matched_path ) {
 		throw new HTTPRequestRejectError(BaseError.RESOURCE_NOT_FOUND);
 	}
-	
-	
+	console.log(remained_path, matched_path);
 	req.info.url.path = remained_path;
 	req.info.url.script_path = matched_path;
 	
