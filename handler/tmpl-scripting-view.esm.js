@@ -59,7 +59,7 @@ export async function Handle(req, res) {
 	if ( !matched_path ) {
 		throw new HTTPRequestRejectError(BaseError.RESOURCE_NOT_FOUND);
 	}
-	console.log(remained_path, matched_path);
+	
 	req.info.url.path = remained_path;
 	req.info.url.script_path = matched_path;
 	
