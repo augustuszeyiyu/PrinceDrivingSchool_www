@@ -10,7 +10,7 @@ const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "0.9.2
 
 // other application arch type can add additional versions like following line
 // KernelArchVersion.push({identifier: "other_arch_versions", version: "0.9.0"});
-KernelArchVersion.push({identifier: "node.prototype.dynamic-view", version: "0.9.1"});
+KernelArchVersion.push({identifier: "node.prototype.dynamic-view", version: "0.9.2"});
 
 
 
