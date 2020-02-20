@@ -66,7 +66,7 @@ export async function Handle(req, res) {
 	req.info.url.script_dir	 = matched_path_dir;
 	
 	
-	const {default:handler} = await import(script_root + matched_path);
+	const {default:handler} = await import(matched_path);
 	if ( typeof handler !== "function" ) {
 		throw new HTTPRequestRejectError(BaseError.UNEXPECTED_SERVER_ERROR);
 	}
