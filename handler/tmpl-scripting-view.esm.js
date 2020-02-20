@@ -17,7 +17,7 @@ export async function Handle(req, res) {
 	const script_root = PurgeRelativePath(Config.server.script_root);
 	const target_url = PurgeRelativePath(decodeURIComponent(req.info.url.path||''));
 	
-	let matched_path = null, remained_path = '', candidate_base = target_url;
+	let matched_path = null, matched_path_dir = '', remained_path = '', candidate_base = target_url;
 	while(candidate_base !== "") {
 		const [left_over, comp] = ShiftURLPath(candidate_base);
 		candidate_base = left_over;
@@ -40,6 +40,7 @@ export async function Handle(req, res) {
 				if ( !stat.isFile() ) continue;
 				
 				matched_path = candidate_path;
+				matched_path_dir = candidate_base;
 				if ( index > 0 ) {
 					remained_path = candidates[0] + remained_path;
 				}
@@ -62,6 +63,7 @@ export async function Handle(req, res) {
 	
 	req.info.url.path = remained_path;
 	req.info.url.script_path = matched_path;
+	req.info.url.script_dir = matched_path_dir;
 	
 	
 	const {default:handler} = await import(script_root + matched_path);
