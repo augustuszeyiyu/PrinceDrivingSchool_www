@@ -95,27 +95,26 @@ export const Handle = Function.sequentialExecutor.async.spread([
 	},
 	function(req, res) {
 	
-
 		const {url} = req.info;
-
-		const isView = Loop_Pop_URL_Path(url.path)
-
-		// console.log('>>>>> _.esm.js >', {url, first_pop, second_pop, third_pop, routes: Config.server.routes});
-
-
 		
+
+		// const [api] = PopURLPath(url.path);
+
+		console.log('>>> _.esm.js >', {url});
+		
+
+		const isView = Loop_Pop_URL_Path(url.path);	
+
+		// if ( Config.server.routes.indexOf(api) >= 0 ) {
 		if ( isView ) {
 			return HandleStaticViewRequest(req, res);
 		}
 		else {
-			const script = HandleTmplScriptingViewRequest(req, res);
-			// console.log('>>>>> _.esm.js >', {script});
-			
-			return script;
+			return HandleTmplScriptingViewRequest(req, res);
 		}
 
-		function Loop_Pop_URL_Path(url) {
-			let list_path = [url]
+		function Loop_Pop_URL_Path(path) {
+			let list_path = [path]
 			let result = '';
 			while (list_path[1]!=='') {				
 				if(list_path.length === 1) {
@@ -124,8 +123,19 @@ export const Handle = Function.sequentialExecutor.async.spread([
 				else {
 					list_path = PopURLPath(list_path[1]);
 				}
-				console.log('_.esm.js > Loop_Pop_URL_Path >', list_path);
-				if(Config.server.routes.indexOf(list_path[0]) >= 0) return true;
+				
+				console.log('_.esm.js > Loop_Pop_URL_Path >', {list_path});
+				
+				for (const elm of Config.server.routes) {
+					console.log(elm+'/', list_path[1], elm+'/' === list_path[1]);
+					
+					if( elm+'/' === list_path[1] ) return false;
+				}
+				
+				
+				if(Config.server.routes.indexOf(list_path[0]) >= 0) {
+					return true;
+				}
 			}
 			
 			return false;

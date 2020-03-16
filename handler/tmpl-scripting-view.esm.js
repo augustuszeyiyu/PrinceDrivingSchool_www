@@ -12,7 +12,7 @@ import {WorkingRoot} from "/kernel-info.esm.js";
 
 
 
-let script_root = '/root';
+const script_root = '/root';
 export async function Handle(req, res) {	
 
 	const target_url  = PurgeRelativePath(decodeURIComponent(req.info.url.path||''));
