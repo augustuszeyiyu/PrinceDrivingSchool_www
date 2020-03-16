@@ -2,7 +2,6 @@
  *	Author: JCloudYu
  *	Create: 2019/07/16
 **/
-import fs from "fs";
 import {PopURLPath} from "jsboost/web/uri-parser.esm.js";
 import {HTTPCookies} from "jsboost/http-cookies.esm.js";
 
@@ -95,17 +94,10 @@ export const Handle = Function.sequentialExecutor.async.spread([
 	},
 	function(req, res) {
 	
-		const {url} = req.info;
-		
-
-		// const [api] = PopURLPath(url.path);
-
-		console.log('>>> _.esm.js >', {url});
-		
+		const {url} = req.info;	
 
 		const isView = Loop_Pop_URL_Path(url.path);	
 
-		// if ( Config.server.routes.indexOf(api) >= 0 ) {
 		if ( isView ) {
 			return HandleStaticViewRequest(req, res);
 		}
@@ -124,11 +116,8 @@ export const Handle = Function.sequentialExecutor.async.spread([
 					list_path = PopURLPath(list_path[1]);
 				}
 				
-				console.log('_.esm.js > Loop_Pop_URL_Path >', {list_path});
 				
-				for (const elm of Config.server.routes) {
-					console.log(elm+'/', list_path[1], elm+'/' === list_path[1]);
-					
+				for (const elm of Config.server.routes) {					
 					if( elm+'/' === list_path[1] ) return false;
 				}
 				

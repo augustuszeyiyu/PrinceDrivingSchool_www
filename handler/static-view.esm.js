@@ -2,13 +2,12 @@
  *	Author: JCloudYu
  *	Create: 2019/09/08
 **/
-import path from "path";
 import fs from "fs";
+import path from "path";
 import {PurgeRelativePath} from "jsboost/web/uri-parser.esm.js";
 
 import {MIME_MAP} from "/lib/mime-map.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
-import {Config} from "/kernel/config.esm.js";
 import {HTTPRequestRejectError} from "/kernel/error.esm.js";
 import {WorkingRoot} from "/kernel-info.esm.js";
 
@@ -17,14 +16,10 @@ const view_root = '/root'
 export async function Handle(req, res) {
 	let targetURL = decodeURIComponent(req.info.url.path||'');
 	
-	// console.log('static-view.esm.js > Handle > 1 ', {targetURL});
-	
 	if ( targetURL[0] !== "/" ) { targetURL = `/${targetURL}`; }
 	
 	// NOTE: If the path is a directory ( ended with a forward slash )
 	if ( targetURL.substr(-1) === '/' ) { targetURL += 'index.html'; }
-
-	// console.log('static-view.esm.js > Handle > 2 ', {targetURL});
 	
 	// NOTE: Resolve path to absolute path ( Purge relative paths such as .. and . )
 	// NOTE: This prevents unexpected /../a/b/c condition which will access out of document root
@@ -32,12 +27,9 @@ export async function Handle(req, res) {
 	// NOTE: Browsers and CURL will not allow this to happen...
 	targetURL = PurgeRelativePath(`${view_root}${targetURL}`);
 	
-	// console.log('static-view.esm.js > Handle > 3 ', {targetURL});
-	
 	// NOTE: Make the url be a full path from document root
 	targetURL = path.resolve(WorkingRoot, targetURL.substring(1));
 	
-	console.log('static-view.esm.js > Handle > 4 ', {targetURL});
 	
 	// NOTE: Directory request prevention
 	try {
