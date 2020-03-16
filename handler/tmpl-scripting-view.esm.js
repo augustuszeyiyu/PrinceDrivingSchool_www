@@ -12,10 +12,13 @@ import {WorkingRoot} from "/kernel-info.esm.js";
 
 
 
+let script_root = '/root';
+export async function Handle(req, res) {	
 
-export async function Handle(req, res) {
-	const script_root = PurgeRelativePath(Config.server.script_root);
 	const target_url  = PurgeRelativePath(decodeURIComponent(req.info.url.path||''));
+	console.log('tmp-script-view.esm.js > Handle > 1 ', {info_url_path: req.info.url.path, script_root, target_url});
+	
+
 	
 	let matched_path = null, matched_path_dir = '', remained_path = '', candidate_base = target_url;
 	while(candidate_base !== "") {
@@ -24,9 +27,15 @@ export async function Handle(req, res) {
 		
 		
 	
+
+
+
+
+		
 		const candidates = [comp, '/index'];
 		
-		
+		console.log('tmp-script-view.esm.js > Handle > 2 ', {left_over, candidate_base, candidates});
+
 		
 		// Search for scripts
 		for ( let index=0; index<candidates.length; index++ ) {
@@ -35,18 +44,41 @@ export async function Handle(req, res) {
 		
 			try {
 				const candidate_path = candidate_base + candidate + '.mjs';
-				const test_path = WorkingRoot + script_root + candidate_path;
+				const test_path = WorkingRoot + script_root + candidate_path;			
+
+
+				console.log('tmp-script-view.esm.js > Handle > 3 ', {candidate_path, test_path});
+
+
 				const stat = fs.statSync(test_path);
+
+				console.log('tmp-script-view.esm.js > Handle > 4 ', {candidate_path, test_path, stat: stat.isFile()});
+
+
 				if ( !stat.isFile() ) continue;
 				
 				matched_path = script_root + candidate_path;
 				matched_path_dir = script_root + candidate_base;
+
+				console.log('tmp-script-view.esm.js > Handle > 5 ', {index, matched_path, matched_path_dir});
+
 				if ( index > 0 ) {
 					remained_path = candidates[0] + remained_path;
+					console.log('tmp-script-view.esm.js > Handle > 6 ', {index, remained_path});
 				}
 				break;
 			}
-			catch(e) { continue; }
+			catch(e) { 
+				// req.info.url.path = '/index'
+				// return Handle(req, res);
+
+
+
+				console.log('tmpl-script.......', {info_url_path :req.info.url.path});
+				
+				
+				continue; 
+			}
 		}
 		
 		// Obtain module
@@ -55,6 +87,7 @@ export async function Handle(req, res) {
 		
 		
 		remained_path = comp + remained_path;
+		
 	}
 	
 	if ( !matched_path ) {
@@ -65,6 +98,7 @@ export async function Handle(req, res) {
 	req.info.url.script_path = matched_path;
 	req.info.url.script_dir	 = matched_path_dir;
 	
+	console.log('tmp-script-view.esm.js > Handle > 7 ', {path: req.info.url.path, script_path: req.info.url.script_path, script_dir: req.info.url.script_dir});
 	
 	const {default:handler} = await import(matched_path);
 	if ( typeof handler !== "function" ) {

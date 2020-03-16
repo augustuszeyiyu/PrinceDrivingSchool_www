@@ -2,6 +2,7 @@
  *	Author: JCloudYu
  *	Create: 2019/07/16
 **/
+import fs from "fs";
 import {PopURLPath} from "jsboost/web/uri-parser.esm.js";
 import {HTTPCookies} from "jsboost/http-cookies.esm.js";
 
@@ -93,16 +94,43 @@ export const Handle = Function.sequentialExecutor.async.spread([
 		req.info.cookies = HTTPCookies.FromRawCookies(req.headers['cookies']||'');
 	},
 	function(req, res) {
+	
+
 		const {url} = req.info;
-		const [api] = PopURLPath(url.path);
+		const first_pop = PopURLPath(url.path);
+		const second_pop = PopURLPath(first_pop[1]);
+		const third_pop = PopURLPath(second_pop[1]);
+
+		console.log('>>>>> _.esm.js >', {url, first_pop, second_pop, third_pop, routes: Config.server.routes});
+
+
 		
-		
-		
-		if ( Config.server.routes.indexOf(api) >= 0 ) {
+		 if ( Config.server.routes.indexOf(first_pop[0]) >= 0 || Config.server.routes.indexOf(second_pop[0]) >= 0 || Config.server.routes.indexOf(third_pop[0]) >= 0 ) {
 			return HandleStaticViewRequest(req, res);
 		}
 		else {
-			return HandleTmplScriptingViewRequest(req, res);
+			const script = HandleTmplScriptingViewRequest(req, res);
+			console.log('>>>>> _.esm.js >', {script});
+			
+			return script;
 		}
+
+		function Loop_Pop_URL_Path(url) {
+			let list_path = [url]
+			let result = '';
+			while (Config.server.routes.indexOf(list_path[0]) === -1) {
+				console.log('_.esm.js > Loop_Pop_URL_Path >', list_path);
+				if(list_path.length === 1) {
+					list_path = PopURLPath(list_path[0]);
+				}
+				else {
+
+				}
+				
+								
+			}
+			
+		}
+		
 	}
 ]);
