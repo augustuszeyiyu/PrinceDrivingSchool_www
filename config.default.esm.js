@@ -9,11 +9,11 @@ export default {
 		routes: [ 			
 		"/node_modules",
 		"/lib",
-		"/res",
 		"/member-view",
 		"/index.html", 
-		"/css" ],
-		script_root: "./root/script",
-		view_root: "./root/view"
+		"/css", "js",
+		 ],
+		// script_root: "./root/script",
+		// view_root: "./root/view"
 	}
 };

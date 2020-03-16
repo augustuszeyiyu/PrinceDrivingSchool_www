@@ -97,20 +97,19 @@ export const Handle = Function.sequentialExecutor.async.spread([
 	
 
 		const {url} = req.info;
-		const first_pop = PopURLPath(url.path);
-		const second_pop = PopURLPath(first_pop[1]);
-		const third_pop = PopURLPath(second_pop[1]);
 
-		console.log('>>>>> _.esm.js >', {url, first_pop, second_pop, third_pop, routes: Config.server.routes});
+		const isView = Loop_Pop_URL_Path(url.path)
+
+		// console.log('>>>>> _.esm.js >', {url, first_pop, second_pop, third_pop, routes: Config.server.routes});
 
 
 		
-		 if ( Config.server.routes.indexOf(first_pop[0]) >= 0 || Config.server.routes.indexOf(second_pop[0]) >= 0 || Config.server.routes.indexOf(third_pop[0]) >= 0 ) {
+		if ( isView ) {
 			return HandleStaticViewRequest(req, res);
 		}
 		else {
 			const script = HandleTmplScriptingViewRequest(req, res);
-			console.log('>>>>> _.esm.js >', {script});
+			// console.log('>>>>> _.esm.js >', {script});
 			
 			return script;
 		}
@@ -118,19 +117,18 @@ export const Handle = Function.sequentialExecutor.async.spread([
 		function Loop_Pop_URL_Path(url) {
 			let list_path = [url]
 			let result = '';
-			while (Config.server.routes.indexOf(list_path[0]) === -1) {
-				console.log('_.esm.js > Loop_Pop_URL_Path >', list_path);
+			while (list_path[1]!=='') {				
 				if(list_path.length === 1) {
 					list_path = PopURLPath(list_path[0]);
 				}
 				else {
-
+					list_path = PopURLPath(list_path[1]);
 				}
-				
-								
+				console.log('_.esm.js > Loop_Pop_URL_Path >', list_path);
+				if(Config.server.routes.indexOf(list_path[0]) >= 0) return true;
 			}
 			
-		}
-		
+			return false;
+		}		
 	}
 ]);
