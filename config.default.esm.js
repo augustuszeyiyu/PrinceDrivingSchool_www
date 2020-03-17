@@ -6,8 +6,13 @@ export default {
 	runtime_dir: ".runtime",
 	server: {
 		host: '127.0.0.1', port: 4321,
-		routes: [ "/index.html", "/css" ],
-		script_root: "./root/script",
-		view_root: "./root/view"
+		routes: [
+			"/css", "js",
+			"/index.html", 
+			"/node_modules",
+			"/lib",
+			"/member-view",
+		],
+		root: '/root',
 	}
 };

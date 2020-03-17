@@ -2,22 +2,20 @@
  *	Author: JCloudYu
  *	Create: 2019/09/08
 **/
-import path from "path";
 import fs from "fs";
+import path from "path";
 import {PurgeRelativePath} from "jsboost/web/uri-parser.esm.js";
 
+import {Config} from "/kernel/config.esm.js";
 import {MIME_MAP} from "/lib/mime-map.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
-import {Config} from "/kernel/config.esm.js";
 import {HTTPRequestRejectError} from "/kernel/error.esm.js";
 import {WorkingRoot} from "/kernel-info.esm.js";
 
 
-
+const view_root = Config.server.root;
 export async function Handle(req, res) {
 	let targetURL = decodeURIComponent(req.info.url.path||'');
-	
-	
 	
 	if ( targetURL[0] !== "/" ) { targetURL = `/${targetURL}`; }
 	
@@ -28,12 +26,10 @@ export async function Handle(req, res) {
 	// NOTE: This prevents unexpected /../a/b/c condition which will access out of document root
 	// NOTE: Theoretically, this condition will also not occur in most cases
 	// NOTE: Browsers and CURL will not allow this to happen...
-	targetURL = PurgeRelativePath(`${Config.server.view_root}${targetURL}`);
-	
+	targetURL = PurgeRelativePath(`${view_root}${targetURL}`);
 	
 	// NOTE: Make the url be a full path from document root
 	targetURL = path.resolve(WorkingRoot, targetURL.substring(1));
-	
 	
 	
 	// NOTE: Directory request prevention
@@ -62,6 +58,9 @@ export async function Handle(req, res) {
 	
 	
 	let readStream = fs.createReadStream(targetURL);
+
+
+
 	await new Promise((resolve, reject)=>{
 		readStream
 		.on('end', resolve)
