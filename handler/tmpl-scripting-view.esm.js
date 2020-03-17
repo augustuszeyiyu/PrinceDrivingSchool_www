@@ -5,13 +5,15 @@
 import fs from "fs";
 import {PurgeRelativePath, ShiftURLPath} from "jsboost/web/uri-parser.esm.js";
 
+import {Config} from "/kernel/config.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
 import {HTTPRequestRejectError} from "/kernel/error.esm.js";
 import {WorkingRoot} from "/kernel-info.esm.js";
 
 
 
-const script_root = '/root';
+const script_root = Config.server.root;
+const SCRIPT_EXTENTION = '.mjs';
 export async function Handle(req, res) {	
 
 	const target_url  = PurgeRelativePath(decodeURIComponent(req.info.url.path||''));
@@ -32,12 +34,11 @@ export async function Handle(req, res) {
 			if ( candidate === "/" || "" )  continue;
 		
 			try {
-				const candidate_path = candidate_base + candidate + '.mjs';
+				
+				const candidate_path = candidate_base + candidate + SCRIPT_EXTENTION;
 				const test_path = WorkingRoot + script_root + candidate_path;
 
-
 				const stat = fs.statSync(test_path);
-
 
 				if ( !stat.isFile() ) continue;
 				
@@ -49,6 +50,7 @@ export async function Handle(req, res) {
 					remained_path = candidates[0] + remained_path;
 				}
 				break;
+				
 			}
 			catch(e) {				
 				continue; 

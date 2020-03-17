@@ -8,7 +8,7 @@ import {Base64URLEncode} from "jsboost/base64.esm.js";
 import {BuildTemplate} from "/lib/tiny-tmpl.esm.js";
 
 const content = BuildTemplate(String.stringTemplate`
-<!DOCTYPE html><html><head><title>Dynamic Page</title><link rel='stylesheet' type='text/css' href='./css/style.css'/></head><body><h2>Hi! in /root of Dynamic Page...</h2>
+<!DOCTYPE html><html><head><title>Dynamic Page</title></head><body><h1>Hi! in / of Dynamic Page...</h1>
 <script type="module">
 
 	import {Base64URLDecode} from "/node_modules/jsboost/base64.esm.js";

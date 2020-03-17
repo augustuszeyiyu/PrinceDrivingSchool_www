@@ -12,8 +12,7 @@ export default {
 			"/node_modules",
 			"/lib",
 			"/member-view",
-		 ],
-		// script_root: "./root/script",
-		// view_root: "./root/view"
+		],
+		root: '/root',
 	}
 };

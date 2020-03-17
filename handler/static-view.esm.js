@@ -6,13 +6,14 @@ import fs from "fs";
 import path from "path";
 import {PurgeRelativePath} from "jsboost/web/uri-parser.esm.js";
 
+import {Config} from "/kernel/config.esm.js";
 import {MIME_MAP} from "/lib/mime-map.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
 import {HTTPRequestRejectError} from "/kernel/error.esm.js";
 import {WorkingRoot} from "/kernel-info.esm.js";
 
 
-const view_root = '/root'
+const view_root = Config.server.root;
 export async function Handle(req, res) {
 	let targetURL = decodeURIComponent(req.info.url.path||'');
 	

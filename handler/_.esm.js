@@ -13,6 +13,10 @@ import {Handle as HandleTmplScriptingViewRequest} from "./tmpl-scripting-view.es
 import {Handle as HandleStaticViewRequest} from "./static-view.esm.js";
 
 
+const STYLE_FILE = '.css';
+const JS_FILE = '.js';
+const MJS_FILE = '.mjs';
+const ESM_FILE = '.esm.js';
 
 export async function Init() {}
 export async function CleanUp() {}
@@ -122,7 +126,9 @@ export const Handle = Function.sequentialExecutor.async.spread([
 				}
 				
 				
-				if(Config.server.routes.indexOf(list_path[0]) >= 0) {
+				if( (Config.server.routes.indexOf(list_path[0]) >= 0) || 
+					(list_path[1].lastIndexOf(STYLE_FILE) > 0) || 
+					(list_path[1].lastIndexOf(ESM_FILE)===-1 && list_path[1].lastIndexOf(JS_FILE) > 0 ) ) {
 					return true;
 				}
 			}
