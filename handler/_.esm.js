@@ -2,24 +2,26 @@
  *	Author: JCloudYu
  *	Create: 2019/07/16
 **/
-import {PopURLPath} from "jsboost/web/uri-parser.esm.js";
 import {HTTPCookies} from "jsboost/http-cookies.esm.js";
 
 import {HTTPRequestRejectError, SystemError} from "/kernel/error.esm.js";
 import {BaseError} from "/lib/error/base-error.esm.js";
-import {Config} from "/kernel/config.esm.js";
 
-import {Handle as HandleTmplScriptingViewRequest} from "./tmpl-scripting-view.esm.js";
-import {Handle as HandleStaticViewRequest} from "./static-view.esm.js";
+import {
+	Init as InitDynamicViewEnvironment,
+	CleanUp as CleanUpDynamicViewEnvironment,
+	Handle as HandleDynamicViewRequest
+} from "./dispatcher.esm.js";
 
 
-const STYLE_FILE = '.css';
-const JS_FILE = '.js';
-const MJS_FILE = '.mjs';
-const ESM_FILE = '.esm.js';
 
-export async function Init() {}
-export async function CleanUp() {}
+
+export function Init() {
+	return InitDynamicViewEnvironment();
+}
+export function CleanUp() {
+	return CleanUpDynamicViewEnvironment();
+}
 export function HandleSystemError(req, res, error) {
 	if ( error instanceof Error ) {
 		if ( error instanceof SystemError ) {
@@ -96,44 +98,5 @@ export const Handle = Function.sequentialExecutor.async.spread([
 		req.meta = {};
 		req.info.cookies = HTTPCookies.FromRawCookies(req.headers['cookies']||'');
 	},
-	function(req, res) {
-	
-		const {url} = req.info;	
-
-		const isView = Loop_Pop_URL_Path(url.path);	
-
-		if ( isView ) {
-			return HandleStaticViewRequest(req, res);
-		}
-		else {
-			return HandleTmplScriptingViewRequest(req, res);
-		}
-
-		function Loop_Pop_URL_Path(path) {
-			let list_path = [path]
-			let result = '';
-			while (list_path[1]!=='') {				
-				if(list_path.length === 1) {
-					list_path = PopURLPath(list_path[0]);
-				}
-				else {
-					list_path = PopURLPath(list_path[1]);
-				}
-				
-				
-				for (const elm of Config.server.routes) {					
-					if( elm+'/' === list_path[1] ) return false;
-				}
-				
-				
-				if( (Config.server.routes.indexOf(list_path[0]) >= 0) || 
-					(list_path[1].lastIndexOf(STYLE_FILE) > 0) || 
-					(list_path[1].lastIndexOf(ESM_FILE)===-1 && list_path[1].lastIndexOf(JS_FILE) > 0 ) ) {
-					return true;
-				}
-			}
-			
-			return false;
-		}		
-	}
+	HandleDynamicViewRequest
 ]);
