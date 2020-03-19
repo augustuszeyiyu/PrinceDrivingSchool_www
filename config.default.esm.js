@@ -5,7 +5,7 @@
 export default {
 	runtime_dir: ".runtime",
 	server: {
-		host: '127.0.0.1', port: 4329,
+		host: '127.0.0.1', port: 8080,
 		document_root: './root',
 	}
 };
