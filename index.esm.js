@@ -58,13 +58,17 @@ import {
 	// NOTE: Create server
 	logger.info( `Creating server instance...` );
 	const SERVER = http.createServer((req, res)=>{
-		let {path, query, fragment} = ParseURLPathDescriptor(req.url||"/");
+		const base_path = req.url||"/";
+		const {path, query, fragment} = ParseURLPathDescriptor(base_path);
 		
 		
 		// INFO: Resolve current request's information
 		{
 			const req_headers = req.headers;
 			const now = Date.now();
+			const original_path = req_headers['x-forwarded-path']||base_path;
+			const prefixed_path = original_path.substring(0, original_path.length - base_path.length)
+			
 		
 			Object.defineProperty(req, 'info', {
 				configurable:false, writable:false, enumerable:true,
@@ -74,10 +78,10 @@ import {
 					remote_ip: req_headers['x-real-ip']||req.socket.remoteAddress,
 					
 					// Note that the req.url is able to be manipulated
-					url: { raw:req.url, path, query, fragment },
+					url: { raw:base_path, routed_path:prefixed_path, path, query, fragment },
 					time: Math.floor(now/1000),
 					time_milli:now
-				})
+				}, true)
 			});
 		}
 		
