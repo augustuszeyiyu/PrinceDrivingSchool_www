@@ -16,9 +16,10 @@
  *	OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 **/
 /**
- *	Version: 1.0.2
+ *	Version: 1.0.3
  *	Author: JCloudYu
- *	Create: 2029/03/03
+ *	Create: 2019/03/03
+ *	Update: 2020/04/08
  *
  *	I've been encountered a stupid situation in which I want to write es module compatible libraries that
  *	can be shared between nodejs and browser, but I have to rename my file in mjs to enable es module in nodejs
@@ -175,7 +176,8 @@ async function ___RESOLVE_OLD_ARCH(specifier, parentModuleURL, defaultResolve){
 				break;
 		}
 	}
-	else{
+	else
+	if ( specifier.substring(0, 7) !== "file://" ) {
 		if( NODE_JS_STYLED_MODULE_ROOT ){
 			specifier = `${ PATHS[0] }node_modules/${ specifier }`;
 		}
