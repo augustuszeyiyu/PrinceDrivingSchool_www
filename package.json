@@ -14,7 +14,7 @@
 	"license": "UNLICENSED",
 	"dependencies": {
 		"beson": "^2.3.1",
-		"extes": "^2.2.13",
-		"jsboost": "^2.10.8"
+		"extes": "^2.2.17",
+		"jsboost": "^2.10.10"
 	}
 }
