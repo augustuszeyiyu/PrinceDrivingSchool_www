@@ -19,7 +19,8 @@ import {BaseError} from "/lib/error/base-error.esm.js";
 
 const FILE_URL_PREFIX = (os.platform().substring(0, 3).lowerCase === "win") ? "file:///" : "file://";
 const DOCUMENT_ROOT = path.resolve(WorkingRoot, Config.server.document_root);
-const VIEW_SCRIPT_EXT = ".mjs";
+const VIEW_SCRIPT_EXT = Config.server.script_ext.map((item)=>(item[0]==='.'?item:('.'+item)));
+const RESTRICTED_EXT = Config.server.restricted_ext.map((item)=>(item[0]==='.'?item:('.'+item)));
 
 
 
@@ -37,12 +38,19 @@ export async function Handle(req, res) {
 		requested_res_path += "/index.html";
 	}
 	
+	
+	
+	if ( MatchExtension(requested_res_path, RESTRICTED_EXT) >= 0 ) {
+		throw new HTTPRequestRejectError(BaseError.FORBIDDEN_ACCESS);
+	}
+	
 	type = await FileType(requested_res_path);
 	if ( type > 0 ) {
-		// NOTE: Detect MIME and respond with corresponding mime type
-		const period_pos = requested_res_path.lastIndexOf('.');
-		const ext = ((period_pos > 0) ? requested_res_path.substring(period_pos) : '').lowerCase;
-		if ( ext !== VIEW_SCRIPT_EXT ) {
+		if ( MatchExtension(requested_res_path, VIEW_SCRIPT_EXT) < 0 ) {
+			// NOTE: Detect MIME and respond with corresponding mime type
+			const period_pos = requested_res_path.lastIndexOf('.');
+			const ext = ((period_pos > 0) ? requested_res_path.substring(period_pos) : '').lowerCase;
+		
 			const contentType = MIME_MAP[ext.substring(1)] || 'application/octet-stream';
 			const headers = {'Content-Type': contentType};
 			await WriteFile(res, requested_res_path, headers, 200);
@@ -73,26 +81,34 @@ async function HandleDynamicView(req, res) {
 		for ( let index=0; index<candidates.length; index++ ) {
 			const candidate = candidates[index];
 			if ( candidate === "/" || "" )  continue;
-		
-			try {
-				const candidate_path = candidate_base + candidate + VIEW_SCRIPT_EXT;
+			
+			for(const candidate_ext of VIEW_SCRIPT_EXT) {
+				const candidate_path = candidate_base + candidate + candidate_ext;
 				const test_path = DOCUMENT_ROOT + candidate_path;
-				
-				const type = await FileType(test_path);
-				if ( type <= 0 ) continue;
-				
-				matched_path = DOCUMENT_ROOT + candidate_path;
-				matched_path_dir = DOCUMENT_ROOT + candidate_base;
-
-
-				if ( index > 0 ) {
-					remained_path = candidates[0] + remained_path;
+			
+				if ( MatchExtension(candidate_path, RESTRICTED_EXT) >= 0 ) {
+					throw new HTTPRequestRejectError(BaseError.FORBIDDEN_ACCESS);
 				}
-				break;
 				
-			}
-			catch(e) {
-				continue;
+				
+				
+				try {
+					const type = await FileType(test_path);
+					if ( type <= 0 ) continue;
+					
+					matched_path = DOCUMENT_ROOT + candidate_path;
+					matched_path_dir = DOCUMENT_ROOT + candidate_base;
+	
+	
+					if ( index > 0 ) {
+						remained_path = candidates[0] + remained_path;
+					}
+					break;
+					
+				}
+				catch(e) {
+					continue;
+				}
 			}
 		}
 		
@@ -137,4 +153,14 @@ function FileType(path) {
 			return resolve(stat.isFile() ? 1 : -1);
 		})
 	});
+}
+function MatchExtension(item, list) {
+	for(let i=0; i<list.length; i++) {
+		const list_item = list[i];
+		if ( item.substring(item.length - list_item.length) === list_item ) {
+			return i;
+		}
+	}
+	
+	return -1;
 }
