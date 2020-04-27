@@ -110,9 +110,10 @@ async function HandleDynamicView(req, res) {
 					continue;
 				}
 			}
+			
+			if ( matched_path ) break;
 		}
 		
-		// Obtain module
 		if ( matched_path ) break;
 		
 		
