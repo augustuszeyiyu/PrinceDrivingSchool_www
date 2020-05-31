@@ -8,7 +8,7 @@ import {Version} from "jsboost/version.esm.js";
 // Arch kernel - https://github.com/JCloudYu/node.prototype.kernel/
 const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "1.0.0"}];
 
-// Arch kernel - https://github.com/JCloudYu/node.prototype.api/
+// Arch api - https://github.com/JCloudYu/node.prototype.api/
 KernelArchVersion.push({identifier: "node.prototype.api", version: "1.0.0"});
 
 // other application arch type can add additional versions like following line
