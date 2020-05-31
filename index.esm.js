@@ -21,14 +21,12 @@ import {
 
 
 (async()=>{
-	const {server:SERVER_INFO} = Config;
-	
-	// NOTE: Compare version to prevent incompatible versions between data and project
 	if ( !CheckDataSystemVersion() ) return;
 	
+	const {server:SERVER_INFO} = Config;
 	
 	
-	// NOTE: Initializing data source environment
+	// Initializing data source environment
 	logger.info( "Trying to initialize application runtime environment..." );
 	let AppRuntime = null;
 	try {
@@ -69,7 +67,6 @@ import {
 			const original_path = req_headers['x-forwarded-path']||base_path;
 			const prefixed_path = original_path.substring(0, original_path.length - base_path.length)
 			
-		
 			Object.defineProperty(req, 'info', {
 				configurable:false, writable:false, enumerable:true,
 				value: Object.assignConstants({}, {
