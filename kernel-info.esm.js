@@ -2,11 +2,11 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import {Beson} from "beson/beson.esm.js";
-import {Version} from "jsboost/version.esm.js";
+import {Version} from "/kernel/version.esm.js";
 
 
 // Arch kernel - https://github.com/JCloudYu/node.prototype.kernel/
-const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "1.0.0"}];
+const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "1.1.0"}];
 
 // Arch api - https://github.com/JCloudYu/node.prototype.api/
 KernelArchVersion.push({identifier: "node.prototype.api", version: "1.0.0"});
@@ -99,7 +99,7 @@ export function CheckDataSystemVersion(auto_exit=true, verbose=true) {
 	}
 	
 	const proj_version = ProjectInfo.version;
-	if ( Version.From(data_version).compare(proj_version) < 0 ) {
+	if ( Version.compare(data_version, proj_version, false) < 0 ) {
 		if ( verbose ) {
 			logger.error( `Data version is older than system version!` );
 			logger.error( `Please update your system using update tool!` );
