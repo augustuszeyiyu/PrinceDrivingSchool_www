@@ -91,29 +91,29 @@ export async function InsertRecord(collection, record, options={}) {
 		return result.insertedCount > 0 ? result.insertedId : false;
 	}
 }
-export async function QueryAndAllocate(collection, query, update_op, options={}) {
+export async function QueryAndAllocate(collection, query, update_op, options={raw_result:false}) {
 	const {multiple, upsert, ...dbOptions} = options;
 	const args = [query, update_op, dbOptions];
 	dbOptions.upsert = true;
 	
 	const result = await collection.updateOne(...args);
-	return result.upsertedCount > 0 ? result.upsertedId : false;
+	return (options.raw_result) ? result : (result.upsertedCount > 0 ? result.upsertedId : false);
 }
 export function QueryList(collection, query, projection={_id:0}, options={}) {
 	options.projection = BuildFieldPickingMap(projection);
 	return collection.find(query, options);
 }
-export async function QueryAndUpdate(collection, query, update_op, options={multiple:false}) {
+export async function QueryAndUpdate(collection, query, update_op, options={multiple:false, raw_result:false}) {
 	const {multiple, upsert, ...dbOptions} = options;
 	const args = [query, update_op, dbOptions];
 	
 	const result = await (multiple ? collection.updateMany(...args) : collection.updateOne(...args));
-	return result.matchedCount > 0 ? result : false;
+	return (options.raw_result) ? result : (result.matchedCount > 0 ? result : false);
 }
-export async function QueryAndDelete(collection, query, options={multiple:false}) {
+export async function QueryAndDelete(collection, query, options={multiple:false, raw_result:false}) {
 	const {multiple, ...dbOptions} = options;
 	const args = [query, dbOptions];
 	
 	const result = await (multiple ? collection.deleteMany(...args) : collection.deleteOne(...args));
-	return result.matchedCount > 0 ? result : false;
+	return (options.raw_result) ? result : (result.deletedCount > 0 ? result : false);
 }
