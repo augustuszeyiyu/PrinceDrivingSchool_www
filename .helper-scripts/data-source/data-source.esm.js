@@ -18,18 +18,12 @@ export async function Init(data_sources) {
 	}
 	await Promise.wait(promises);
 }
-export async function CleanUp(data_sources) {
+export async function CleanUp() {
 	const promises = [];
-	for(const source_info of data_sources) {
-		const {script} = source_info;
-		const script_path = path.resolve('/data-source', script);
-		promises.push(import(script_path).then((module)=>{
-			LoadedModules.push(module);
-			if (module.CleanUp) {
-				return module.CleanUp(Object.assign({},source_info));
-			}
-			return;
-		}));
+	for(const module of LoadedModules) {
+		if (module.CleanUp) {
+			promises.push(module.CleanUp());
+		}
 	}
 	await Promise.wait(promises);
 }

@@ -1,5 +1,5 @@
 import fs from "fs";
-import {Version} from "jsboost/version.esm.js";
+import {Version} from "/kernel/version.esm.js";
 
 import {WorkingRoot, KernelInfo} from "/kernel-info.esm.js";
 
@@ -36,12 +36,12 @@ import {WorkingRoot, KernelInfo} from "/kernel-info.esm.js";
  	const versions = [];
  	for( const item of content_list ) {
  		if ( item === "." || item === ".." || item.substr(-7) !== ".esm.js" ) continue;
- 		const version = Version.From(item.substring(0, item.length-7));
+ 		const version = Version.from(item.substring(0, item.length-7));
  		if ( !version ) continue;
  		
  		versions.push(version);
  	}
- 	versions.sort((a, b)=>{return a.compare(b);});
+ 	versions.sort((a, b)=>a.compare(b, false));
  	
  	
  	
@@ -49,11 +49,11 @@ import {WorkingRoot, KernelInfo} from "/kernel-info.esm.js";
  	const start_version = system_version;
  	const indented_logger = logger.indent();
  	for( const version of versions ) {
- 		if ( version.compare(system_version) <= 0 ) continue;
- 		logger.log( `Updating to ${version._raw}...` );
- 		const {Update} = await import( `/update/updates/${version._raw}.esm.js` );
+ 		if ( version.compare(system_version, false) <= 0 ) continue;
+ 		logger.log( `Updating to ${version.version_string}...` );
+ 		const {Update} = await import( `/update/updates/${version.version_string}.esm.js` );
  		await Update(system_version, indented_logger);
- 		KernelInfo.version = system_version = version._raw;
+ 		KernelInfo.version = system_version = version.version_string;
  		await KernelInfo.save();
  		logger.log( '' );
  	}
