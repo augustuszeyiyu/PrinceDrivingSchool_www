@@ -6,10 +6,10 @@ import {Version} from "/kernel/version.esm.js";
 
 
 // Arch kernel - https://github.com/JCloudYu/node.prototype.kernel/
-const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "1.1.0"}];
+const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "1.1.2"}];
 
 // Arch api - https://github.com/JCloudYu/node.prototype.api/
-KernelArchVersion.push({identifier: "node.prototype.api", version: "1.0.0"});
+KernelArchVersion.push({identifier: "node.prototype.api", version: "1.0.1"});
 
 // Arch dynamic-www - https://github.com/JCloudYu/node.prototype.api/
 KernelArchVersion.push({identifier: "node.prototype.dynamic-view", version: "1.0.1"});
@@ -112,4 +112,9 @@ export function CheckDataSystemVersion(auto_exit=true, verbose=true) {
 	}
 	
 	return true;
+}
+export function ResolveFileURIPath(url) {
+	if ( url.substring(0, 7) !== "file://" ) return url;
+
+	return url.substring(IsWindowsEnv ? 8 : 7);
 }
