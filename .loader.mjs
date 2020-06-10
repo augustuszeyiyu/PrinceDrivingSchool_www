@@ -1,7 +1,7 @@
 /**
  *	ISC License
  *
- *	Copyright (c) 2019, J. Cloud Yu
+ *	Copyright (c) 2020, J. Cloud Yu
  *
  *	Permission to use, copy, modify, and/or distribute this software for any
  *	purpose with or without fee is hereby granted, provided that the above
@@ -16,7 +16,7 @@
  *	OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 **/
 /**
- *	Version: 1.0.3
+ *	Version: 1.0.4
  *	Author: JCloudYu
  *	Create: 2019/03/03
  *	Update: 2020/04/08
@@ -63,10 +63,11 @@ const IS_WINDOWS = (os.platform().substring(0, 3) === "win");
 const IS_WIN_ABSOLUTE_PATH = /^[a-zA-Z]:\/[^/].*$/;
 const IS_COMPLETE_PATH = /^(\/\/|\/|\.\/|\.\.\/)(.*)$/;
 const IS_NET_SCRIPT = /^(http|https):\/\/.*$/;
+const WORKING_DIR = process.cwd();
 const PATHS = [
-	null,	// Reserved for main module dir
+	null,
 	null,	// Reserved for main module path
-	`file://${ IS_WINDOWS ? '/' : '' }${ process.cwd() }/`
+	`file://${IS_WINDOWS ? '/' : ''}${WORKING_DIR}/`
 ];
 
 
@@ -96,12 +97,11 @@ let _RESOLVE_API = (...args)=>{
 		
 		
 		const specifier = args[0];
-		PATHS[1] = (specifier.substring(0, 7) !== "file://") ? `file://${ specifier }` : specifier;
+		PATHS[1] = (specifier.substring(0, 7) !== "file://") ? `file://${specifier}` : specifier;
 		
 		const _MAIN_MODULE_PATH = PATHS[1];
 		const DIVIDER_POS = _MAIN_MODULE_PATH.lastIndexOf('/') + 1;
 		PATHS[0] = _MAIN_MODULE_PATH.substring(0, DIVIDER_POS);
-		args[0] = `./${ _MAIN_MODULE_PATH.substring(DIVIDER_POS) }`;
 	}
 	
 	return _RESOLVE_API(...args);
