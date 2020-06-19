@@ -10,7 +10,6 @@ Thumbs.db
 /config.js
 /config.esm.js
 
-/.ig.*
-/._ig.*
+/.loader.paths.json
 /.runtime
 /.kernel.bes
