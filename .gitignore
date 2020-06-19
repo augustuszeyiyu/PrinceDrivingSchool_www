@@ -10,7 +10,9 @@ Thumbs.db
 /config.js
 /config.esm.js
 
-/.ig.*
-/._ig.*
+/.loader.paths.json
 /.runtime
 /.kernel.bes
+
+# Don't commit me!!!
+/node_modules
