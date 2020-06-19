@@ -13,6 +13,3 @@ Thumbs.db
 /.loader.paths.json
 /.runtime
 /.kernel.bes
-
-# Don't commit me!!!
-/node_modules
