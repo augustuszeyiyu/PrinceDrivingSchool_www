@@ -16,7 +16,7 @@
  *	OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 **/
 /**
- *	Version: 1.0.4
+ *	Version: 1.0.5
  *	Author: JCloudYu
  *	Create: 2019/03/03
  *	Update: 2020/04/08
@@ -45,9 +45,10 @@
  *		then the path will be prefixed with ./ and use the condition 3 to process the path
 **/
 // Source: https://gist.github.com/JCloudYu/87b4a5caff65320557452167e3466dbb
-
+import fs from "fs";
 import process from 'process';
 import os from 'os';
+import path from "path";
 import {get as https_get} from 'https';
 import {get as http_get} from 'http';
 
@@ -69,7 +70,31 @@ const PATHS = [
 	null,	// Reserved for main module path
 	`file://${IS_WINDOWS ? '/' : ''}${WORKING_DIR}/`
 ];
+const PATH_MAP = Object.create(null);
+const LOADER_SCRIPT_PATH =import.meta.url.substring(IS_WINDOWS?8:7);
 
+
+// Load path maps
+try {
+	const PATH_DESCRIPTOR = LOADER_SCRIPT_PATH.substring(0, LOADER_SCRIPT_PATH.length - 4) + ".paths.default.json";
+	const content = JSON.parse(fs.readFileSync(PATH_DESCRIPTOR).toString('utf8'));
+	if ( Object(content) === content && Object(content.paths) === content.paths ) {
+		for(const key in content.paths) {
+			PATH_MAP[key] = path.resolve(WORKING_DIR, content.paths[key]);
+		}
+	}
+} catch(e) {}
+
+
+try {
+	const PATH_DESCRIPTOR = LOADER_SCRIPT_PATH.substring(0, LOADER_SCRIPT_PATH.length - 4) + ".paths.json";
+	const content = JSON.parse(fs.readFileSync(PATH_DESCRIPTOR).toString('utf8'));
+	if ( Object(content) === content && Object(content.paths) === content.paths ) {
+		for(const key in content.paths) {
+			PATH_MAP[key] = path.resolve(WORKING_DIR, content.paths[key]);
+		}
+	}
+} catch(e) {}
 
 
 
@@ -128,12 +153,16 @@ async function ___RESOLVE_NEW_ARCH(specifier, context, defaultResolve){
 	}
 	else if( matches !== null ){
 		switch( matches[1] ){
-			case "//":
-				specifier = specifier.substring(2);
+			case "//": {
+				const full_path = specifier.substring(2);
+				const idx = full_path.indexOf('/');
+				const token = full_path.substring(0, idx<0?full_path.length:idx);
+				specifier = `${IS_WINDOWS?'file://':'file:///'}${PATH_MAP[token]||`::${token}::`}${full_path.substring(idx<0?full_path.length:idx)}`;
 				break;
+			}
 			
 			case "/":
-				specifier = `${ PATHS[0] }${ specifier.substring(1) }`;
+				specifier = `${PATHS[0]}${ specifier.substring(1) }`;
 				break;
 			
 			case "./":
@@ -162,9 +191,13 @@ async function ___RESOLVE_OLD_ARCH(specifier, parentModuleURL, defaultResolve){
 	}
 	else if( (matches = specifier.match(IS_COMPLETE_PATH)) !== null ){
 		switch( matches[1] ){
-			case "//":
-				specifier = `${ PATHS[0] }node_modules/${ specifier.substring(2) }`;
+			case "//": {
+				const full_path = specifier.substring(2);
+				const idx = full_path.indexOf('/');
+				const token = full_path.substring(0, idx<0?full_path.length:idx);
+				specifier = `${IS_WINDOWS?'file://':'file:///'}${PATH_MAP[token]||`::${token}::`}${full_path.substring(idx<0?full_path.length:idx)}`;
 				break;
+			}
 			
 			case "/":
 				specifier = `${ PATHS[0] }${ specifier.substring(1) }`;
