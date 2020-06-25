@@ -6,7 +6,7 @@ import {Version} from "/kernel/version.esm.js";
 
 
 // Arch kernel - https://github.com/JCloudYu/node.prototype.kernel/
-const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "1.1.3"}];
+const KernelArchVersion = [{identifier: "node.prototype.kernel", version: "1.1.4"}];
 
 // other application arch type can add additional versions like following line
 // KernelArchVersion.push({identifier: "other_arch_versions", version: "0.9.0"});
@@ -79,7 +79,6 @@ const ProjectInfo = JSON.parse(fs.readFileSync(`${WorkingRoot}/package.json`));
 
 
 
-export {IsWindowsEnv, WorkingRoot, KernelInfo, ProjectInfo, KernelArchVersion};
 export function Init() {
 	_load_kernel_data();
 }
@@ -113,3 +112,4 @@ export function ResolveFileURIPath(url) {
 
 	return url.substring(IsWindowsEnv ? 8 : 7);
 }
+export {IsWindowsEnv, WorkingRoot, KernelInfo, ProjectInfo, KernelArchVersion};
