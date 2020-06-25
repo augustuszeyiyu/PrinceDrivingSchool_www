@@ -8,6 +8,7 @@ import {Beson} from "beson/beson.esm.js";
 
 import {WorkingRoot} from "/kernel-info.esm.js";
 import {Config} from "/kernel/config.esm.js";
+import {Watchable} from "/kernel/watchable.esm.js";
 
 export const RuntimeDir = path.resolve(WorkingRoot, Config.runtime_dir);
 
@@ -33,6 +34,7 @@ export const RuntimeData = new Proxy({}, {
 		return true;
 	}
 });
+export const VolatileData = Watchable();
 export async function Init() {
 	const stat = (()=>{
 		try {

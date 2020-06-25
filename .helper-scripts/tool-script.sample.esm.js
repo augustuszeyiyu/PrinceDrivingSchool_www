@@ -2,8 +2,7 @@
  *	Author: JCloudYu
  *	Create: 2020/02/27
 **/
-import {WorkingRoot, CheckDataSystemVersion} from "/kernel-info.esm.js";
-import {RuntimeDir} from "/kernel/runtime.esm.js";
+import {WorkingRoot, CheckDataSystemVersion, RuntimeDir} from "/kernel.esm.js";
 
 
 
