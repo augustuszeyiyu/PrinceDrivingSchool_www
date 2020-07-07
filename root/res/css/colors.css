@@ -1,0 +1,39 @@
+/* NOTE: Color Variables */
+:root {
+	--color-white: #FFF;
+	--color-light-gray:#DDD;
+	--color-grayEEE:#DDD;
+	--color-grayDDD:#DDD;
+	--color-grayBBB: #BBB;
+	--color-grayAAA: #AAA;
+	--color-gray777: #777;
+	--color-gray555: #555;
+	--color-gray: #555;
+	--color-gray444: #444;
+	--color-gray333: #333;
+	--color-dark-gray: #333;
+	--color-dark: #1D1D1D;
+	--color-black: #000;
+	
+	--color-light-blue: #EFF4FF;
+	--color-blue: #2D89EF;
+	--color-dark-blue: #2B5797;
+	
+	--color-red: #E11;
+	--color-dark-red: #B91D47;
+	--color-magenta: #FF0097;
+	
+	--color-light-purple: #9F00A7;
+	--color-purple: #7E3878;
+	--color-dark-purple: #603CBA;
+	
+	--color-teal: #00ABA9;
+	--color-light-green: #99B433;
+	--color-green: #00A300;
+	--color-dark-green: #1E7145;
+	
+	--color-yellow: #FFC40D;
+	--color-orange: #E3A21A;
+	--color-dark-orange: #DA532C;
+
+}
