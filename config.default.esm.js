@@ -5,6 +5,9 @@
 export default {
 	runtime_dir: ".runtime",
 	server: {
-		host: '127.0.0.1', port: 4322
+		host: '127.0.0.1', port: 8080,
+		document_root: './root',
+		script_ext: [ ".mjs" ],
+		restricted_ext: [ ".lib.mjs" ],
 	}
 };
