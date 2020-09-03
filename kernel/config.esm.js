@@ -12,7 +12,7 @@ export async function Init() {
 	// NOTE: Load customized configurations in project root
 	let es_config_loaded = false;
 	try {
-		const {default:CUSTOMIZED_CONFIG} = await import( "/PrinceDrivingSchool/config.esm.js" );
+		const {default:CUSTOMIZED_CONFIG} = await import( "/config.esm.js" );
 		Object.merge(Config, CUSTOMIZED_CONFIG);
 		es_config_loaded = true;
 	} catch(e) {}

@@ -10,9 +10,10 @@ body {
 	margin-top:2rem;
 	margin-bottom:2rem;
 }
+
 @media only screen and (min-width: 1440px) {
 	header{
-		position: fixed;
+		/*position: fixed;*/
 		z-index: 1000;
 		width: 100%;
 	}
@@ -56,6 +57,10 @@ ul li{
 	text-align:center;
 	list-style: none;
 }
+
+.navbar .navbar-toggler-icon {
+    background-image: url(data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
+}
 .nav > ul {
 	margin: 0 auto;
 	overflow: hidden;
@@ -69,11 +74,10 @@ ul li{
 .nav .nav-item {
 	margin: 0;
 	padding: 0;
-	border-right:1px solid white;
 	flex-grow:1;
 }
 .nav .nav-item:first-child {
-	border-left:1px solid white;
+	border-left:none;
 }
 .nav .nav-item a {
 	font-family:"微軟正黑體", "Arial", "Microsoft JhengHei","新細明體";
@@ -82,7 +86,7 @@ ul li{
 	/*display: block;*/
 	font-size: 1rem;
 	font-weight:700;
-
+	border:none;
 	height: 2rem;
 	letter-spacing: 2px;
 	line-height: 2rem;
@@ -99,10 +103,39 @@ ul li{
 	color: #c0c3b4;
 }
 
+.custom-navbar-nav{
+	flex-direction: column;
+}
 
+@media (min-width:992px){
+	.nav-logo .
+	.navlog .logo img{
+		height:80px;margin-right:25px;
+	}
+	.nav.navbar-collapse{
+		display: -ms-flexbox!important;
+    	display: flex!important;
+    	-ms-flex-preferred-size: auto;
+    	flex-basis: auto;
+	}
+	.navbar button{
+		display:none;
+	}
+	.custom-navbar-nav{
+		flex-direction: row;
+	}
+	.nav .nav-item {
+		margin: 0;
+		padding: 0;
+		border-right:1px solid white;
+		flex-grow:1;
+	}
+	.nav .nav-item:first-child {
+		border-left:1px solid white;
+	}
+}
 
 .banner {
-	border-radius: 20px;
 	background:#d3e3fc;
 }
 .content-box{
@@ -274,7 +307,7 @@ ul li{
 .index_04{
 	border:2px solid #d3e3fc;
 	border-radius:15px;
-	height:100%;
+	/*height:100%;*/
 }
 .index_04 .index_04_title{
 	font-weight:bolder;
@@ -297,12 +330,15 @@ ul li{
 	/*border-radius:15px;*/
 }
 .index_04 .index_04_info{
-	width:80%;
+	margin:auto;
+	width:90%;
 	text-align:center;
 	padding-top:1rem;
 	/*padding-bottom:1rem;*/
 }
-
+.index_04 .index_04_info p{
+	text-align:left;
+}
 
 
 .index_05_title {
@@ -426,8 +462,22 @@ ul li{
 .footer div.article ul li p {
 	float: left;
 }
-
-
+#map{
+	width: 100%;
+	height: calc(100vw*0.66*0.3);
+}
+@media only screen and (max-width: 1100px){
+	#map{
+		width: 100%;
+		height: calc(100vw*0.35);
+	}
+}
+@media only screen and (max-width: 540px){
+	#map{
+		width: 100%;
+		height: calc(100vw*0.85);
+	}
+}
 #body .content {
 	margin: 0 auto;
 	min-height: 960px;
@@ -640,8 +690,7 @@ ul li{
 #footer {
 	/*background: url(../img/bg-footer.png) repeat-x top center;*/
 	background-color:#d3e3fc;
-	margin: 0;
-	padding: 45px 0 40px;
+	padding: 20px 0;
 }
 #footer div {
 	margin: 0 auto;
@@ -692,7 +741,7 @@ ul li{
 }
 #footer p {
 	color: #3a3e2c;
-	float: right;
+	/*float: ;*/
 	font-size: 12px;
 	letter-spacing: 1px;
 	line-height: 19px;
@@ -807,11 +856,11 @@ ul li{
     -moz-justify-content: flex-end;
     -ms-justify-content: flex-end;
     -webkit-justify-content: flex-end;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.1);
 }
 
 .horizontal-accordion .section.larger:hover {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0);
 }
 
 .horizontal-accordion h3 {
@@ -971,10 +1020,10 @@ ul li{
         width: 95%;
     }
 
-    .row, .single .jumbotron .row  {
-        padding-top: 2em;
-        padding-bottom: 2em;
-    }
+    /*.row, .single .jumbotron .row  {*/
+    /*    padding-top: 2em;*/
+    /*    padding-bottom: 2em;*/
+    /*}*/
 
     .single .row .row {
         padding: 0;
@@ -2062,11 +2111,13 @@ Big fans home
 .grid .close-icon:hover {opacity: 1;}
 
 .grid h3 {color: #4c4d3d; margin: 0; margin-bottom: 0.5em; font-size: 2em; font-weight:bold; font-family:"微軟正黑體", "Arial", "Microsoft JhengHei", "新細明體";}
-
+.grid .copy h3{
+	color:#ffffff;
+}
 .grid .text {position: absolute; bottom: 0; left: 0; width: 100%; text-align: center; background: rgba(0,0,0,0.1); z-index: 2; height: 100%; display: flex; display: -ms-flex; display: -webkit-flex; display: -moz-flex; align-items: center; -ms-align-items: center; -moz-align-items: center; -webkit-align-items: center; flex-direction: column; -ms-flex-direction: column; -moz-flex-direction: column; -webkit-flex-direction: column; justify-content: flex-end; -moz-justify-content: flex-end; -ms-justify-content: flex-end; -webkit-justify-content: flex-end; padding-bottom: 2em; transition: all 0.5s;  cursor: pointer; transition: all 0.5s;}
 
 .grid .copy {opacity: 0; transition: all 0.5s; background: rgba(0,0,0,0.7); position: absolute; bottom: 0; z-index: 0; padding: 3em; text-align: center;}
-.grid .copy p {color: #fff;}
+.grid .copy p {color: #ffc425;}
 
 .grid .faux-button {opacity: 0; transition: all 0.5s;}
 
@@ -2080,7 +2131,6 @@ Big fans home
 
 @media only screen and (max-width: 1450px) {
 	#featured-product {height: 600px;}
-	
 	.grid {height: 500px;}
 	.grid .section {height: 250px;}
 	.grid h3 {font-size: 1.8em;}
@@ -2088,15 +2138,18 @@ Big fans home
 	.grid .copy {padding: 2em;}
 }
 
+@media only screen and (max-width: 992px){
+	.grid {height: 100%;}
+}
 @media only screen and (max-width: 1200px) {
 	#big-ass-fans .small-image, #big-ass-light .small-image {margin-bottom: 2em;}
 
 	#featured-product p {margin-bottom: 2em;}
 	#featured-product h2 {margin-bottom: 0.7em;}
 	
-	.grid {height: auto; flex-direction: column; -ms-flex-direction: column; -moz-flex-direction: column; -webkit-flex-direction: column;}
+	.grid { : column; -ms-flex-direction: column; -moz-flex-direction: column; -webkit-flex-direction: column;}
 	.grid .one-half {height: 500px; width: 100%;}
-	.grid img {top: -25%;}
+	/*.grid img {top: -25%;}*/
 	.grid .one-half:first-of-type .section.right.top img {top: -10%;}
 	.grid .one-half:last-of-type .section.right.bottom img {top: 0;}
 	
@@ -2144,7 +2197,7 @@ Big fans home
 	#featured-product h2 {margin-bottom: 0.5em;}
 	#featured-product .yellow-button {margin-bottom: 2em; font-size: 1.3em;}
 	
-	.grid .section {width: 100%; position: relative; height: 100px;}
+	.grid .section {width: 100%; position: relative; height: 200px;}
 	.grid .section.larger {height: 300px;}
 	.grid .one-half {flex-direction: column; -ms-flex-direction: column; -webkit-flex-direction: column; -moz-flex-direction: column; height: auto;}
 	.grid h3 {font-size: 1.3em;}
@@ -2165,6 +2218,8 @@ Big fans home
 	.grid .section.larger {height: 225px;}
 	.grid .copy {padding: 1em;}
 }
+
+
 
 /*Bootstrap Cover*/
 @media (min-width: 576px) {

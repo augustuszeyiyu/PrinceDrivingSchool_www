@@ -1,3 +1,5 @@
+
+
 if(jQuery(window).width() >= 800) {
 	jQuery('.grid-item').hover(function() {
 		/*jQuery(this).find('.overlay').css('background', 'rgba(255,196,37,0.3)');*/

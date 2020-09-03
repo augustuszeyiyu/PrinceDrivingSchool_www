@@ -28,7 +28,7 @@ div#boot-overlay.hide { display:none; }
 div#loading-overlay {
 	position:absolute; z-index:998; opacity:1;
 	display:flex; justify-content:center; align-items:center;
-	background:#075 url( '../img/bg.jpg' ) no-repeat center center;
+	background:#075 url('../../img/bg.jpg') no-repeat center center;
 	background-size:cover;
 }
 div#loading-overlay.animate { transition:opacity 0.5s ease-out; }
