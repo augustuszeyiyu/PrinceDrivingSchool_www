@@ -68,7 +68,7 @@ function PageContent(page_name) {
 			<div class="row row-banner animate__animated animate__fadeInLeft" style="animation-duration: 2s; background:linear-gradient(135deg, #d3e3fc 35%,transparent 45%) center center / 100% 100%, url(./res/img/group/001.JPG) right center / auto 100%;">
 				<div class="banner-text">
 					<h3 style="font-size:1.5rem; padding:1rem 2rem 4px 0;border-bottom:2px solid #0D7496">自由</h3>
-					<p>享受假使的樂趣</p>
+					<p>帶您享受駕駛的樂趣</p>
 				</div>
 			</div>
 			<div class="row row-banner animate__animated animate__fadeInRight" style="animation-duration: 2s; background:linear-gradient(135deg, transparent 30%, #d3e3fc 60%) center center / 100% 100%, url(./res/img/group/003.JPG) right center / auto 100%;">
@@ -434,10 +434,10 @@ function PageContent(page_name) {
 	<!--各類獎章-->
 	<section class="" style="background-color:#0D7496;">
 		<div class="container">
-			<div class="py-5 text-center">
+			<div class="py-4 text-center" style="border-bottom:2px solid white;">
 	<!--            <i class="fas fa-award" style="width:56px"></i>-->
 	<!--            <p style="color:white;">medal</p>-->
-				<h2 style="color:white;">各類獎章</h2>
+				<h2 style="color:white; margin-bottom:0; padding-bottom:0;">各類獎章</h2>
 			</div>
 			<div class="row content-box justify-content-center medal">
 				<div class="media-img col-md-2 col-6">

@@ -23,20 +23,15 @@ header.nav-logo{
 }
 header a.logo {
 	display: block;
-	height: 80px;
 	margin: 0 auto;
-	padding: 10px 0 10px;
 	font-size:1.5rem;
 	font-weight:bold;
 	font-family:"微軟正黑體", "Arial", "Microsoft JhengHei","新細明體";
-	color:#585D46;
+	/*color:#585D46;*/
+	color:#0D7496;
 	text-decoration: none;
 	text-transform: uppercase;
 }
-header a.logo img {
-	border: 0;
-}
-
 
 header .navbar{
 	/*background-color: #585D46;*/
@@ -45,18 +40,30 @@ header .navbar{
 	background-color: #0D7496;
 
 }
+ul {
+	padding-inline-start:unset;
+}
 ul li{
 	text-align:center;
 	list-style: none;
 }
-.dropdown-menu{
-	padding:0!important;
-	width:5rem;
-}
-.dropdown-menu > li {
-	text-align:center;
+ul .course-dropdown-menu li{
+	padding-inline-start:50%;
+	text-align: left;
 	list-style: none;
 }
+
+ul .course-dropdown-menu li a{
+	text-decoration:underline!important;
+}
+/*.dropdown-menu{*/
+/*	padding:0!important;*/
+/*	width:5rem;*/
+/*}*/
+/*.dropdown-menu > li {*/
+/*	text-align:center;*/
+/*	list-style: none;*/
+/*}*/
 
 .navbar .navbar-toggler-icon {
     background-image: url(data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
@@ -107,16 +114,51 @@ ul li{
 	flex-direction: column;
 }
 
+
+.head-panel{
+	background-color:#d3e3fc;
+}
+.head-panel .container .row{
+	padding:0.25rem;
+}
+.head-panel .nav-logo .logo img{
+	height:60px;
+	margin-right:25px;
+	border: 0;
+}
+.navbar{
+	padding:0.25rem 1rem;
+}
 @media (min-width:992px){
-	.nav-logo .
-	.navlog .logo img{
-		height:80px;margin-right:25px;
+	.navbar{
+		padding:0.5rem 1rem;
+	}
+	.head-panel{
+		background-color:#d3e3fc;
+	}
+	.head-panel .container .row button{
+		display:none;
+	}
+	.nav-logo .logo img{
+		height:80px;
+		margin-right:25px;
+		border: 0;
 	}
 	.nav.navbar-collapse{
 		display: -ms-flexbox!important;
     	display: flex!important;
     	-ms-flex-preferred-size: auto;
     	flex-basis: auto;
+	}
+	ul .course-dropdown-menu li{
+		padding-inline-start:2rem;
+		text-align: left;
+		list-style: none;
+	}
+
+	ul .course-dropdown-menu li a{
+		color:white !important;
+		/*text-decoration:unset!important;*/
 	}
 	.navbar button{
 		display:none;
@@ -139,8 +181,11 @@ ul li{
 	background:#d3e3fc;
 }
 .content-box{
-	padding: 3rem 0rem 3rem 0rem;
+	padding: 1.5rem 0 1.5rem 0;
 }
+
+
+/*************upon this line is head area*****************/
 /*#body {*/
 /*	!*background: url(../img/bg-content.jpg) repeat;*!*/
 /*	margin: 0;*/
@@ -311,10 +356,10 @@ ul li{
 }
 .index_04 .index_04_title{
 	font-weight:bolder;
-	color:silver;
-	font-size:1.5rem;
+	color:rgb(13, 116, 150);
+	font-size:1.4rem;
 	/*border-left:4px solid darkgray;*/
-	padding-left:2rem;
+	padding-left:0.5rem;
     margin: 1rem 0 1rem 2rem;
     line-height: 2rem;
 }
@@ -338,6 +383,7 @@ ul li{
 }
 .index_04 .index_04_info p{
 	text-align:left;
+	font-size:1.1rem;
 }
 
 
@@ -382,7 +428,7 @@ ul li{
 	border-radius:0 0 1rem 0;
 }
 
-
+/*************under this line is footer area*****************/
 
 
 .footer {
@@ -470,12 +516,13 @@ ul li{
 	#map{
 		width: 100%;
 		height: calc(100vw*0.35);
+		margin-top:40px;
 	}
 }
 @media only screen and (max-width: 540px){
 	#map{
 		width: 100%;
-		height: calc(100vw*0.85);
+		height: calc(100vw*0.618);
 	}
 }
 #body .content {

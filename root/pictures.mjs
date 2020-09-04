@@ -5,7 +5,7 @@ import {FooterContent} from "./include/footer.esm.js";
 
 function PageContent(page_name){
 return	`
-	<div style="padding-top:1px;box-shadow: 0 15px 15px 2px #ccc;">
+	<div class="carousel-content">
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
 			<ol class="carousel-indicators">
 			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -13,22 +13,25 @@ return	`
 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
-			<div class="carousel-item active" style="overflow:hidden; height:66vh;">
-					<img src="./res/img/tz793.jpg" class="d-block w-100" alt="..." style="  filter: brightness(90%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);">
-					<div class="carousel-caption d-none d-md-block">
-					<h4>照片花絮</h4>
-					</div>
+			<div class="carousel-item active">
+				<img src="./res/img/tz793.jpg" class="d-block w-100" alt="..." style="  filter: brightness(90%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);">
+				<div class="carousel-caption d-none d-md-block">
+				<h4>照片花絮</h4>
+<!--					<p>包容.專業.安全.耐心</p>-->
+				</div>
 			</div>
-			<div class="carousel-item" style="overflow:hidden; height:66vh;">
+			<div class="carousel-item">
 				<img src="./res/img/tz0143.JPG" class="d-block w-100" alt="..." style="filter: brightness(90%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);">
 				<div class="carousel-caption d-none d-md-block">
 				<h4>照片花絮</h4>
+<!--				<p>年的信賴與品質</p>-->
 				</div>
 			</div>
-			<div class="carousel-item" style="overflow:hidden; height:66vh;">
+			<div class="carousel-item">
 				<img src="./res/img/tzd01.JPG" class="d-block w-100" alt="..." style="filter: brightness(90%); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 				<div class="carousel-caption d-none d-md-block">
 				<h4>照片花絮</h4>
+<!--				<p>桃竹地區的最佳選擇</p>-->
 				</div>
 			</div>
 			</div>
@@ -43,23 +46,18 @@ return	`
 		</div>
 	</div>
 
-<div class="temp_01" style="padding-top:40px!important;padding-bottom:40px!important;">
-	<div class="container  ">
-		<div class="row justify-content-center" >
-			<div class="banner-text temp_01 index_04 banner" style="padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start">
-				<h1 style="font-size:3rem;border-bottom:2px solid #0D7496; color:#0D7496;font-weight:bold;padding-bottom:0.2rem;">太子駕訓班</h1>
-				<h5>桃竹駕訓的最優選擇</h5>
-			</div>
-		</div>
-		<div class="row" style="height:20vh; justify-content:start; align-items:center;background:linear-gradient(135deg, #d3e3fc 40%,transparent 40%) center center / 100% 100%, url(./res/img/group/004.JPG) right 65% / auto 100%; background-size:cover;">
-			<div class="banner-text" style="display:flex;flex-direction:column;margin-left:8rem;">
-				<h3 style="font-size:1.5rem; padding:1rem 2rem 4px 0;border-bottom:2px solid #0D7496">耐心</h3>
-				<p>優良的用路習慣，一切從第一次開始</p>
+
+
+	<div class="temp_01" style="padding-top:40px!important;padding-bottom:40px!important;">
+		<div class="container  ">
+			<div class="row justify-content-center" >
+				<div class="banner-text temp_01 index_04 banner" style="background-color:transparent!important; padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start">
+					<h1 style="font-size:3rem;border-bottom:2px solid #0D7496; color:#0D7496;font-weight:bold;padding-bottom:0.2rem;">照片花絮</h1>
+					<h4 style="text-align:center;width:100%">太子駕訓</h4>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-</div>
 
 
 <!--照片花絮-->
@@ -156,7 +154,69 @@ return	`
 
 `;
 }
-
+function PageStyle(){
+return`
+	<style>
+	@media (min-width:992px){
+		.carousel-content{
+			box-shadow: 0 15px 15px 2px #ccc;
+			margin-top:112px;
+		}
+	}
+	.carousel-content{
+		box-shadow: 0 15px 15px 2px #ccc;
+		margin-top:76px;
+	}
+	.carousel-item{
+		 overflow:hidden;
+		 height:calc(100vw*0.4);
+	}
+		.carousel-item img{
+			filter: brightness(90%); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+		}
+	.temp_01{
+		padding-top:40px!important;
+		padding-bottom:40px!important;
+	}
+		.temp_01 .row-banner{
+			margin:1.5rem 0;
+			height:180px;
+			align-items:center;
+			background-size:cover!important;
+		}
+		.temp_01 .row-banner:nth-child(2n){
+			justify-content:flex-end!important;
+		}
+			.temp_01 .row-banner .banner-text{
+				display:flex;
+				flex-direction:column;
+				margin:0 0 0 3rem;
+			}
+			.temp_01 .row-banner:nth-child(2n) .banner-text{
+				margin:0 3rem 0 0;
+			}
+	.grid .section{
+	}
+	@media only screen and (max-width: 767px) {
+		.medal .media-img{
+			padding:2px;
+		}
+	}
+	@media only screen and (min-width: 1200px) {
+		.carousel-item{
+			 overflow:hidden;
+			 height:calc(100vw*0.66*0.4);
+		}
+			.carousel-item img{
+				top:30%;
+			}
+		.grid{
+			height:calc(1060px*0.66);
+		}
+	}
+	</style>
+`;
+}
 export default function(req, res){
 	res.writeHead(200, {
 		"Content-Type":"text/html"
@@ -164,7 +224,7 @@ export default function(req, res){
 	
 	res.write(''+
 `<html>
-	<head>${PageHead()}</head>
+	<head>${PageHead()}${PageStyle()}</head>
 	<body>${NavContent()} ${PageContent('')} ${FooterContent()}</body>
 </html>
 `);

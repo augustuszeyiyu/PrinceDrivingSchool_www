@@ -6,9 +6,11 @@ export function PageHead(){
 		<head>
 			<meta charset="UTF-8">
 			<title>太子駕訓班</title>
-			<link rel="stylesheet" href="./res/css/bootstrap.css" type="text/css">
-			<link rel="stylesheet" href="./res/css/style.css" type="text/css">
-			<link rel="stylesheet" href="./res/css/basic.css" type="text/css">
+			<link rel="icon" href="../res/img/logo01.png" sizes="192x192" />
+			
+			<link rel="stylesheet" href="../res/css/bootstrap.css" type="text/css">
+			<link rel="stylesheet" href="../res/css/style.css" type="text/css">
+			<link rel="stylesheet" href="../res/css/basic.css" type="text/css">
 <!--			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >-->
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 
