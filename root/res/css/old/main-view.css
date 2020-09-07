@@ -1,0 +1,118 @@
+/**
+ *	Author: JCloudYu
+ *	Create Date: 2019/06/27
+**/
+div#boot-overlay, div#loading-overlay {
+	position:absolute; left:0; top:0; width:100%; height:100%; overflow:hidden;
+}
+
+div#boot-overlay {
+	z-index:999; opacity:1;
+	display:flex; justify-content:center; align-items:center;
+	/**background:#075 url( '../img/bg.jpg' ) no-repeat center center;**/
+    background-color: #ffffff;
+	background-size:cover;
+}
+div#boot-overlay.animate { transition:opacity 0.5s ease-out; }
+	div#boot-overlay:before {
+		content:' '; width:100%; height:100%;
+		position:absolute; left:0; top:0;
+		z-index:1; background:rgba(0, 0, 0, 0.15);
+	}
+	div#boot-overlay .loading-indicator {
+		position:relative; z-index:999; text-align:center;
+	}
+div#boot-overlay.hiding { opacity:0; }
+div#boot-overlay.hide { display:none; }
+
+div#loading-overlay {
+	position:absolute; z-index:998; opacity:1;
+	display:flex; justify-content:center; align-items:center;
+	background:#075 url('../../img/bg.jpg') no-repeat center center;
+	background-size:cover;
+}
+div#loading-overlay.animate { transition:opacity 0.5s ease-out; }
+	div#loading-overlay:before {
+		content:' '; width:100%; height:100%;
+		position:absolute; left:0; top:0;
+		z-index:1; background:rgba(0, 0, 0, 0.15);
+	}
+	div#loading-overlay .loading-indicator {
+		position:relative; z-index:999; text-align:center;
+	}
+div#loading-overlay.hiding { opacity:0; }
+div#loading-overlay.hide { display:none; }
+
+div#viewport {
+	position:relative; left:0; top:0; z-index:10;
+	width:100%; height:100%; overflow:auto;
+	background:var(--color-white); color:var(--color-black);
+}
+
+.header-wrapper{
+    width: 100% !important;
+    max-width: 1110px !important;
+    margin: 0 auto;
+}
+#main-menu{
+    z-index: 100;
+    min-height: 50px !important;
+    height: auto !important;
+}
+#user_log_info{
+    float: right;
+}
+.header-wrapper .logo{
+        float: left;
+    }
+.header-wrapper .logo > h2{
+    color: var(--color-white);
+}
+div#user_log_info > ul > li {
+    float: left;
+    display: block;
+}
+	div#viewport > nav {
+		position:relative; left:0; top:0; z-index:2;
+		width:100%; height:100vh; overflow:auto;
+		background:var(--color-green); box-shadow:0 0 10px 0 var(--color-dark-gray);
+	}
+	div#viewport > div {
+		position:relative;
+        /**left:0;
+        top:0; **/
+        z-index:1;
+		/**margin-left:200px; width:calc(100% - 200px); **/min-height:100vh;
+	}
+		div#viewport > div > main {
+			position:relative;
+            /**left:0;
+            top:0; **/
+            z-index:1;
+			width:100%; min-height:100%;
+		}
+			div#viewport > div > main > div.view { position:relative; width:100%; }
+			div#viewport > div > main > div.view.hide { display:none; }
+
+
+div.loading-overlay {
+	position:fixed; left:200px; top:0;
+	width:calc(100vw - 200px); height:100vh; overflow:hidden;
+	display:flex; justify-content:center; align-items:center;
+	background:rgba(255, 255, 255, 0.5);
+	background-size:cover; opacity:1; z-index:999;
+}
+div.loading-overlay.expand {
+	left:0; top:0; width:100vw; height:100vh;
+}
+div.loading-overlay.animate { transition:opacity 0.5s ease-out; }
+	div.loading-overlay .loading-indicator {
+		position:relative; z-index:999; text-align:center;
+	}
+		div.loading-overlay .loading-indicator .msg {
+			position:absolute; left:0; top:0; width:100%; height:100%;
+			display:flex; justify-content:center; align-items:center; color:var(--color-white);
+		}
+div.loading-overlay.hiding { opacity:0; }
+div.loading-overlay.hide { display:none; }
+

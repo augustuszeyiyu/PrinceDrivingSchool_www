@@ -1,0 +1,45 @@
+/*.table { background:var(--color-dark); }*/
+/*	.table > .t-header {*/
+/*		position:relative; width:100%; height:3rem; overflow:hidden; color:var(--color-white);*/
+/*		box-sizing:border-box; background:var(--color-gray);*/
+/*		border:1px solid var(--color-gray777); border-left:0; border-right:0;*/
+/*	}*/
+/*		.table > .t-header .column { border-right:1px solid var(--color-gray777); }*/
+/*		.table > .t-header .column:last-child { margin-right:0; border-right:none; }*/
+/*	.table > ul.t-body { list-style:none; padding:0; margin:0; }*/
+/*		.table > ul.t-body > li.t-row {*/
+/*			position:relative; width:100%; height:2rem; overflow:hidden;*/
+/*			background:var(--color-dark-gray); color:var(--color-white); border-bottom:1px solid var(--color-gray);*/
+/*		}*/
+/*		.table > ul.t-body > li.t-row:hover { background:var(--color-gray444); }*/
+/*		.table > ul.t-body > li.t-row:last-child {}*/
+/*			.table > ul.t-body > li.t-row > .column-wrapper {*/
+/*				position:relative; width:100%; height:100%; overflow:hidden;*/
+/*				box-sizing:border-box; color:var(--color-white);*/
+/*			}*/
+/*				.table > ul.t-body > li.t-row .column {}*/
+/*				.table > ul.t-body > li.t-row .column.expand { width:100% !important; justify-content:center; }*/
+/*	.table .column {*/
+/*		float:left; height:100%; padding:0 1rem; overflow:hidden;*/
+/*		display:flex; align-items:center; box-sizing:border-box;*/
+/*	}*/
+/*		.table .column > .limiter {*/
+/*			width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;*/
+/*		}*/
+
+
+.table {}
+	.table > .t-head, .table .t-body { border:1px solid #EEE; }
+		.table > .t-body > .t-row, .table > .t-head { display:grid; }
+		.table > .t-body > .t-row:first-child ~ .t-row { border-top:1px solid #EEE; }
+			.table .t-column {
+				overflow:hidden;
+				display:flex; justify-content:center; align-items:center;
+				min-width:0; padding:0.5rem;
+			}
+		.table > .t-body > .t-row:nth-child(2n+1){ background-color:whitesmoke; }
+		.table > .t-body > .t-row:nth-child(2n){ background-color: #ebf0fa; }
+			.table .t-column.no-padding {padding:0;}
+				.table .t-column > div.text-limiter { width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+			
+			.table .t-column:first-child ~ .t-column { border-left:1px solid #EEE; }

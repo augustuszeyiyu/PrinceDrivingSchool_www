@@ -13,3 +13,12 @@ Thumbs.db
 /.loader.paths.json
 /.runtime
 /.kernel.bes
+
+
+
+#Augustus Project
+root.rar
+/root/res/img/
+/root/res/img/*.ipg
+/root/res/img/*.JPG
+/root/res/img/*.png
