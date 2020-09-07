@@ -14,23 +14,23 @@ return	`
 			</ol>
 			<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="./res/img/tz793.jpg" class="d-block w-100" alt="..." style="  filter: brightness(90%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);">
+				<img src="./res/img/tz793.jpg" class="d-block w-100" alt="..." >
 				<div class="carousel-caption d-none d-md-block">
-				<h4>照片花絮</h4>
+				<h2>照片花絮</h2>
 <!--					<p>包容.專業.安全.耐心</p>-->
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="./res/img/tz0143.JPG" class="d-block w-100" alt="..." style="filter: brightness(90%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);">
+				<img src="./res/img/tz0143.JPG" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
-				<h4>照片花絮</h4>
+				<h2>照片花絮</h2>
 <!--				<p>年的信賴與品質</p>-->
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="./res/img/tzd01.JPG" class="d-block w-100" alt="..." style="filter: brightness(90%); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+				<img src="./res/img/tzd01.JPG" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
-				<h4>照片花絮</h4>
+				<h2>照片花絮</h2>
 <!--				<p>桃竹地區的最佳選擇</p>-->
 				</div>
 			</div>
@@ -51,7 +51,7 @@ return	`
 	<div class="temp_01" style="padding-top:40px!important;padding-bottom:40px!important;">
 		<div class="container  ">
 			<div class="row justify-content-center" >
-				<div class="banner-text temp_01 index_04 banner" style="background-color:transparent!important; padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start">
+				<div class="banner-text temp_01 index_04 banner" style="background-color:d3e3fc!important; padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start">
 					<h1 style="font-size:3rem;border-bottom:2px solid #0D7496; color:#0D7496;font-weight:bold;padding-bottom:0.2rem;">照片花絮</h1>
 					<h4 style="text-align:center;width:100%">太子駕訓</h4>
 				</div>
@@ -61,8 +61,10 @@ return	`
 
 
 <!--照片花絮-->
+<div class="container-fluid" style="background-color:#e5efe3!important; padding:10rem 5rem">
+</div>
 <div class="container" >
-	<div class="jumbotron" style=background-color:white>
+	<div class="jumbotron" style="background-color:transparent">
 		<div class="grid">
 				<div class="section left top" style="z-index: 1;">
 					<img src="./res/img/space/001.JPG" style="">
@@ -70,13 +72,11 @@ return	`
 					<div class="text" style="">
 <!--					<div class="text" style="opacity: 0.2;">-->
 						<h3>場地實況</h3>
-	
 						<div class="faux-button">
 							<div class="plus-icon"></div>
 							<h5>more..</h5>
 						</div>
 					</div>
-	
 					<div class="copy" style="opacity: 0; z-index: 0; width: 100%;">
 						<img class="close-icon" src="./res/img/delete-icon-black.png">
 	
@@ -91,7 +91,7 @@ return	`
 					<img src="./res/img/space/004.JPG" style="">
 	
 					<div class="text">
-						<h3 style="color:white;">場地實況</h3>
+						<h3>場地實況</h3>
 						<div class="faux-button">
 							<div class="plus-icon"></div>
 							<h5>more..</h5>
@@ -110,7 +110,7 @@ return	`
 					<img src="./res/img/space/003.JPG" style="">
 	
 					<div class="text">
-						<h3 style="color:white;">場地實況</h3>
+						<h3>場地實況</h3>
 						<div class="faux-button">
 							<div class="plus-icon"></div>
 							<h5>more..</h5>
@@ -172,8 +172,27 @@ return`
 		 height:calc(100vw*0.4);
 	}
 		.carousel-item img{
-			filter: brightness(90%); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+			filter: brightness(30%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
 		}
+		
+	.carousel-caption{
+			/*bottom:32%;*/
+		}
+		.carousel-caption h2{
+			width:20%;
+			font-size:2rem;
+			/*border-bottom:1px solid #d3e3fc;*/
+			color:#fff;
+			font-weight:bold;
+			padding-bottom:0.2rem;
+			margin:0 auto 0.5rem auto;
+		}
+		.carousel-caption h4{
+			text-align:center;
+			width:100%;
+			color:#d3e3fc;
+		}
+		
 	.temp_01{
 		padding-top:40px!important;
 		padding-bottom:40px!important;
