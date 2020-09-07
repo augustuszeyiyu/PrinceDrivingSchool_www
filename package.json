@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "node.prototype.api",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "",
 	"main": "boot.js",
 	"scripts": {
