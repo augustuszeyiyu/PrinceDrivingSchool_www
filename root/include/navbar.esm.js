@@ -69,49 +69,6 @@ return `
 				</div>
 			</div>
 			
-
-
-
-			
-			
-<!--<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:#138a9f">-->
-<!--    <div class="container">-->
-<!--        <a class="custom-navbar-brand navbar-brand" href="#"><img src="#" alt="太子駕訓班LOGO"><h1 style="font-size: 17px;line-height: 38px;display: inline-block;margin-bottom: 0;">太子駕訓班</h1></a>-->
-<!--        <button class="navbar-toggler-custom navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-<!--        <div class="navbar-collapse justify-content-end collapse show" id="navbarNav" style="">-->
-<!--            <ul class="custom-navbar-nav navbar-nav text-center">-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="/index">首頁</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="/about">關於太子駕訓班</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="https://car.taipei-drive.com.tw/page/coach">開班內容</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="https://car.taipei-drive.com.tw/news">環境設施</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="https://car.taipei-drive.com.tw/signup">教練介紹</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="https://car.taipei-drive.com.tw/page/transfer">照片花絮</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="https://car.taipei-drive.com.tw/signup/search">聯絡我們</a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</nav>-->
-		
-		
-		
-	
-		
 		</header>
 `;
 }

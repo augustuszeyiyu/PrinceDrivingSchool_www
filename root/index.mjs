@@ -53,31 +53,31 @@ function PageContent(page_name) {
 	<div class="temp_01" style="overflow:hidden">
 		<div class="container ">
 			<div class="row justify-content-center" >
-				<div class="banner-text temp_01 index_04 banner animate__animated animate__fadeIn" style="animation-duration: 2.5s ;padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start">
+				<div class="banner-text temp_01 index_04 banner animate__animated animate__fadeIn" style="animation-duration: 2.5s ;padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start;">
 					<h1 style="font-size:3rem;border-bottom:2px solid #0D7496; color:#0D7496;font-weight:bold;padding-bottom:0.2rem;">太子駕訓班</h1>
 					<h5>桃竹駕訓的最優選擇</h5>
 				</div>
 			</div>
 	
-			<div class="row row-banner animate__animated animate__fadeInRight" style="animation-duration: 2s; background:linear-gradient(135deg, transparent 50%, #d3e3fc 60%) center center / 100% 100%, url(./res/img/group/003.JPG) right 65% / auto 100%;">
-				<div class="banner-text">
+			<div class="row row-banner animate__animated animate__fadeInRight" style="animation-duration: 2s; background:linear-gradient(135deg, transparent 50%, #d3e3fc 60%) center center / 100% 100%, url(./res/img/group/003.JPG) right 65% / auto 100%; box-shadow: 1px 2px 2px #ccc;">
+				<div class="banner-text ">
 					<h3 style="font-size:1.5rem; padding:1rem 2rem 4px 0; border-bottom:2px solid #0D7496">安全</h3>
 					<p>安全是回家唯一的路</p>
 				</div>
 			</div>
-			<div class="row row-banner animate__animated animate__fadeInLeft" style="animation-duration: 2s; background:linear-gradient(135deg, #d3e3fc 35%,transparent 45%) center center / 100% 100%, url(./res/img/group/001.JPG) right center / auto 100%;">
+			<div class="row row-banner animate__animated animate__fadeInLeft" style="animation-duration: 2s; background:linear-gradient(135deg, #d3e3fc 35%,transparent 45%) center center / 100% 100%, url(./res/img/group/001.JPG) right center / auto 100%; box-shadow: 1px 2px 2px #ccc;">
 				<div class="banner-text">
 					<h3 style="font-size:1.5rem; padding:1rem 2rem 4px 0;border-bottom:2px solid #0D7496">自由</h3>
 					<p>帶您享受駕駛的樂趣</p>
 				</div>
 			</div>
-			<div class="row row-banner animate__animated animate__fadeInRight" style="animation-duration: 2s; background:linear-gradient(135deg, transparent 30%, #d3e3fc 60%) center center / 100% 100%, url(./res/img/group/003.JPG) right center / auto 100%;">
+			<div class="row row-banner animate__animated animate__fadeInRight" style="animation-duration: 2s; background:linear-gradient(135deg, transparent 30%, #d3e3fc 60%) center center / 100% 100%, url(./res/img/group/003.JPG) right center / auto 100%; box-shadow: 1px 2px 2px #ccc;">
 				<div class="banner-text">
 					<h3 style="font-size:1.5rem; padding:1rem 2rem 4px 0;border-bottom:2px solid #0D7496">專業</h3>
 					<p>學習到的知識讓您一生受用</p>
 				</div>
 			</div>
-			<div class="row row-banner animate__animated animate__fadeInLeft" style="animation-duration: 2s; background:linear-gradient(135deg, #d3e3fc 35%,transparent 45%) center center / 100% 100%, url(./res/img/group/004.JPG) right 65% / auto 100%;">
+			<div class="row row-banner animate__animated animate__fadeInLeft" style=" animation-duration: 2s; background:linear-gradient(135deg, #d3e3fc 35%,transparent 45%) center center / 100% 100%, url(./res/img/group/004.JPG) right 65% / auto 100%; box-shadow: 1px 2px 2px #ccc);">
 				<div class="banner-text">
 					<h3 style="font-size:1.5rem; padding:1rem 2rem 4px 0;border-bottom:2px solid #0D7496">耐心</h3>
 					<p>優良的用路習慣，一切從第一次開始</p>
@@ -141,31 +141,30 @@ function PageContent(page_name) {
 	<!--Part A-->
 	<div class="" >
 		<div class="horizontal-accordion">
-			<img class="close-icon desktop-visible" src="./res/img/delete-icon-black.png">
-		
-			 <div class="section" target="section-one">
-		
-				<div class="label" style="opacity: 0;">環境與設施</div>
-		
-				<div class="smaller-copy visible">
-					<h3>環境與設施</h3>
-					<p class="">良好的環境與設施能事半功倍的讓您長或駕駛技術，在專業的教授幫助下，讓您在駕駛學習的歷程上更安全，熟練的掌握駕駛技術。
-					</p>
-		
-					<div class="faux-button">
-						<div class="plus-icon"></div>
-						<h5>學員BMW道路考照..</h5>
-					</div>
+			<img class="close-icon desktop-visible" src="./res/img/delete-icon-black.png" style=" filter: blur(1px);">
+			<div class="section" target="section-one">
+			
+			<div class="label" style="opacity: 0;">環境與設施</div>
+			
+			<div class="smaller-copy visible">
+				<h3>環境與設施</h3>
+				<p class="">良好的環境與設施能事半功倍的讓您長或駕駛技術，在專業的教授幫助下，讓您在駕駛學習的歷程上更安全，熟練的掌握駕駛技術。
+				</p>
+			
+				<div class="faux-button">
+					<div class="plus-icon"></div>
+					<h5>學員BMW道路考照..</h5>
 				</div>
-		
-				<div class="larger-copy" style="display: none;">
-					<h3>環境與設施</h3>
-					<p>太子駕訓班</p>
-					<p> 1.優秀寬敞的環境<br>
-						2.全新BMW路考用車<br>
-						3.在原場地考試<br>
-					<a href="/environment"><h5></h5></a>
-				</div>
+			</div>
+			
+			<div class="larger-copy" style="display: none;">
+				<h3>環境與設施</h3>
+				<p>太子駕訓班</p>
+				<p> 1.優秀寬敞的環境<br>
+					2.全新BMW路考用車<br>
+					3.在原場地考試<br>
+				<a href="/environment"><h5></h5></a>
+			</div>
 			</div>
 			<div class="section" target="section-two">
 				<!--<div class="label" style="opacity: 0;">專業的師資</div>-->
@@ -320,7 +319,7 @@ function PageContent(page_name) {
 	</div>
 	<!--場地環境-->
 	<div class="container" >
-		<div class="jumbotron " style=background-color:white>
+		<div class="jumbotron" style="background-color:transparent;">
 			<div class="grid">
 					<div class="section left top" style="animation-duration: 2s;z-index: 1;">
 						<img src="./res/img/space/001.JPG" style="">
@@ -410,7 +409,7 @@ function PageContent(page_name) {
 		$(window).on("load",function() {
 			$(window).scroll(function() {
 				// var windowBottom = $(this).scrollTop() + $(this).innerHeight();
-				var windowBottom = $(this).scrollTop() + ($(this).innerHeight())*0.1;
+				var windowBottom = $(this).scrollTop() + ($(this).innerHeight())*0.01;
 
 				$(".grid .section").each(function() {
 				  /* Check the location of each desired element */
@@ -432,7 +431,7 @@ function PageContent(page_name) {
 	<script src="./res/js/home.js"></script>
 	
 	<!--各類獎章-->
-	<section class="" style="background-color:#0D7496;">
+	<section class="" style="background-color:#0D7496;margin-top:2rem;">
 		<div class="container">
 			<div class="py-4 text-center" style="border-bottom:2px solid white;">
 	<!--            <i class="fas fa-award" style="width:56px"></i>-->
