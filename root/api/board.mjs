@@ -44,7 +44,7 @@ async function RetrieveBoardMessage(req, res) {
 	const page = (query.p||1)|0;
 	const size = (query.ps||10)|0;
 	const endpoint = ParseURLPath(query._e||'');
-	const db_cursor = DTSource.db.collection('message-board').find({endpoint, revoke_time:0}, {_id:0,endpoint:0,source_ip:0});
+	const db_cursor = DTSource.db.collection('message-board').find({endpoint, revoke_time:0}, {_id:0,endpoint:0,source_ip:0}).sort({id:-1});
 	const http_cursor = await BuildHttpCursor(db_cursor, page<=0?1:page, size<=0?10:size);
 	
 	WriteJSON(res, http_cursor);
