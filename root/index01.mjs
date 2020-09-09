@@ -459,7 +459,9 @@ function PageContent(req, page_name) {
 			</div>
 		</div>
 	</section>
-	<div class='section'>${MsgBoard(req.info.url.path)}</div>
+	
+	<!--<div class='section'>\${MsgBoard(req.info.url.path)}</div>-->
+	<div class='section'>${ MsgBoard("/index01test") }</div>
 	
 	<!--未分類-->
 	<!--
@@ -607,6 +609,8 @@ export default function(req, res){
 	res.writeHead(200, {
 		"Content-Type":"text/html"
 	});
+	// console.log('123333');
+	// console.log(req,req.info.url.path);
 	
 	res.write(''+
 `<html>

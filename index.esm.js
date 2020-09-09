@@ -58,7 +58,7 @@ import {
 	const SERVER = http.createServer((req, res)=>{
 		const base_path = req.url||"/";
 		const {path, query, fragment} = ParseURLPathDescriptor(base_path);
-		
+		// console.log(base_path);
 		
 		// INFO: Resolve current request's information
 		{

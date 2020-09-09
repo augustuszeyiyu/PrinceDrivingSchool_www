@@ -53,6 +53,7 @@ import {get as https_get} from 'https';
 import {get as http_get} from 'http';
 
 
+
 // ES Modules' identifier is renamed into 'module' after NodeJS v12
 const [NJS_MAJOR] = process.versions.node.split('.');
 const ESM_IDENTIFIER = (NJS_MAJOR >= 12) ? 'module' : 'esm';
@@ -61,7 +62,7 @@ const WASM_IDENTIFIER = "wasm";
 
 const NODE_JS_STYLED_MODULE_ROOT = true;
 const IS_WINDOWS = (os.platform().substring(0, 3) === "win");
-const IS_WIN_ABSOLUTE_PATH = /^[a-zA-Z]:\/[^/].*$/;
+const IS_WIN_ABSOLUTE_PATH = /^[a-zA-Z]:\/[^\/].*$/;
 const IS_COMPLETE_PATH = /^(\/\/|\/|\.\/|\.\.\/)(.*)$/;
 const IS_NET_SCRIPT = /^(http|https):\/\/.*$/;
 const WORKING_DIR = process.cwd();
@@ -186,10 +187,14 @@ async function ___RESOLVE_OLD_ARCH(specifier, parentModuleURL, defaultResolve){
 	
 	
 	let matches = null;
-	if( IS_WINDOWS && IS_WIN_ABSOLUTE_PATH.test(specifier) ){
-		specifier = `file:///${ specifier }`;
+	if ( IS_WINDOWS ) {
+		specifier = specifier.replace(/\\/g, '\/');
+		if (IS_WIN_ABSOLUTE_PATH.test(specifier)) {
+			specifier = `file:///${ specifier }`;
+		}
 	}
-	else if( (matches = specifier.match(IS_COMPLETE_PATH)) !== null ){
+	
+	if( (matches = specifier.match(IS_COMPLETE_PATH)) !== null ){
 		switch( matches[1] ){
 			case "//": {
 				const full_path = specifier.substring(2);

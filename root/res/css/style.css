@@ -49,15 +49,16 @@ ul li{
 	text-align:center;
 	list-style: none;
 }
-ul .course-dropdown-menu li{
+ul.course-dropdown-menu li{
 	padding-inline-start:50%;
 	text-align: left;
 	list-style: none;
 }
 
-ul .course-dropdown-menu li a{
+ul.course-dropdown-menu li a{
 	text-decoration:underline!important;
 }
+
 /*.dropdown-menu{*/
 /*	padding:0!important;*/
 /*	width:5rem;*/
@@ -152,15 +153,19 @@ ul .course-dropdown-menu li a{
     	-ms-flex-preferred-size: auto;
     	flex-basis: auto;
 	}
-	ul .course-dropdown-menu li{
+	ul.course-dropdown-menu li{
 		padding-inline-start:2rem;
 		text-align: left;
 		list-style: none;
+		padding-right:2rem;
 	}
-
-	ul .course-dropdown-menu li a{
+	ul.course-dropdown-menu li a{
 		color:white !important;
-		/*text-decoration:unset!important;*/
+	}
+	ul.course-dropdown-menu{
+	position:absolute;
+	background-color:#0D7496;
+	width:auto;
 	}
 	.navbar button{
 		display:none;

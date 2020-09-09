@@ -56,14 +56,16 @@ async function LeaveMessage(req, res) {
 	}
 	
 	const payload = await ReadJSON(req);
+
 	if ( payload !== Object(payload) ) {
-		throw new HTTPRequestRejectError(BaseError.INVALID_REQUEST_PAYLOAD);
+		WriteJSON(res, BaseError.INVALID_REQUEST_PAYLOAD, 400);
+		return;
 	}
 	
 	
 	const {remote_ip} = req.info;
 	const name = (''+(payload.name||'')).trim();
-	const endpoint = ParseURLPath((''+(payload.endpoint||'')).trim());
+	const endpoint = ParseURLPath( (''+(payload.endpoint||'') ).trim());
 	const title = (''+(payload.title||'')).trim();
 	const message = (''+(payload.message||'')).trim();
 	const errors = [];
@@ -72,8 +74,10 @@ async function LeaveMessage(req, res) {
 	if ( !title ) { errors.push(ERROR_CODE.TITLE_CANNOT_BE_EMPTY); }
 	if ( !message ) { errors.push(ERROR_CODE.MESSAGE_CANNOT_BE_EMPTY); }
 	if ( !name ) { errors.push(ERROR_CODE.NAME_CANNOT_BE_EMPTY); }
+	console.log(errors);
 	if ( errors.length > 0 ) {
-		throw new HTTPRequestRejectError(BaseError.INVALID_REQUEST_PAYLOAD, errors);
+		WriteJSON(res, Object.assign({details:errors},BaseError.INVALID_REQUEST_PAYLOAD), 400);
+		return;
 	}
 	
 	
@@ -87,7 +91,8 @@ async function LeaveMessage(req, res) {
 	new_msg.source_ip = remote_ip;
 	const result = await DTSource.db.collection('message-board').insertOne(new_msg);
 	if ( result.insertedCount !== 1 ) {
-		throw new HTTPRequestRejectError(BaseError.UNEXPECTED_DB_FAILURE);
+		WriteJSON(res, BaseError.UNEXPECTED_DB_FAILURE, 400);
+		return;
 	}
 	
 	

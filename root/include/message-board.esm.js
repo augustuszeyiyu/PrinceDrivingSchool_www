@@ -73,9 +73,6 @@ export default function(path) {
 			alert(errors.join("\\n"));
 			return;
 		}
-		
-		
-		
 		LeaveMsg(_path, name, title, message).then(()=>window.location.reload()).catch((e)=>alert(e.message));
 	});
 	
@@ -112,6 +109,7 @@ export default function(path) {
 			
 			
 			const msg_time = new Date(record.create_time * 1000);
+				console.log(records);
 			name.textContent = record.nick_name;
 			time.textContent = \`\${msg_time.getFullYear()}/\${Padding(msg_time.getMonth()+1)}/\${msg_time.getDate()} \${Padding(msg_time.getHours())}:\${Padding(msg_time.getMinutes())}\`
 			title.textContent = record.title||'';
@@ -133,17 +131,23 @@ export default function(path) {
 	function FetchMsgList(path) {
 		const param = new URLSearchParams();
 		param.set('_e', path);
-		return fetch('/api/board/?' + param.toString(), {method:'GET', mode:'no-cors', credentials:"same-origin"}).then((res)=>res.json());
+		return fetch('/api/board/?' + param.toString(), {method:'GET', mode:'no-cors', credentials:"same-origin"}).then(async(res)=>{
+			const result = await res.json();
+			return ( !res.ok )?Promise.reject(result) : result;
+		});
 	}
 	function LeaveMsg(path, name, title, message) {
-		return fetch("/api/board/", {
+		return fetch("./api/board/", {
 			method:'POST', cors:'no-cors', credentials:"same-origin",
 			headers:{"Content-Type":"application/json"},
 			body: JSON.stringify({
 				endpoint: path,
 				name, title, message
 			})
-		}).then((resp)=>resp.json());
+		}).then(async(res)=>{
+			const result = await res.json();
+			return ( !res.ok )?Promise.reject(result) : result;
+		});
 	}
 })()</script>
 `;

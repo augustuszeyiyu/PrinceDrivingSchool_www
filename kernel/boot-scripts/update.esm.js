@@ -11,7 +11,7 @@ import {WorkingRoot, KernelInfo} from "/kernel-info.esm.js";
 	try {
 		UpdateRuntime = await import("/update/update.runtime.esm.js");
 	}
-	catch(e) {}
+	catch(e) {console.error(e);}
 	
 	if ( UpdateRuntime ) {
 		if ( UpdateRuntime.Init ) {
