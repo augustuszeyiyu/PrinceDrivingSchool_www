@@ -11,6 +11,7 @@ export default function(path) {
 	return `
 <div id="${module_id}">
 	<label>留言板</label>
+	<p>提醒您，本留言區,為非即時性回復。如有即時性需求，請電(03)436 - 1488。由專人為您服務。</p>
 	<div id="${module_id}_msg_zone"></div>
 	<!--
 	<div class='record'>

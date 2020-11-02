@@ -16,27 +16,28 @@ return`
 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="./res/img/tz793.jpg" class="d-block w-100" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-				<h2>課程介紹</h2>
-<!--					<p>包容.專業.安全.耐心</p>-->
+				<div class="carousel-item active">
+					<img src="./res/img/DSC_0055.JPG" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+					<h2>課程介紹</h2>
+	<!--				<p>桃竹地區的最佳選擇</p>-->
+					</div>
 				</div>
-			</div>
-			<div class="carousel-item">
-				<img src="./res/img/tz0143.JPG" class="d-block w-100" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-				<h2>課程介紹</h2>
-<!--				<p>年的信賴與品質</p>-->
+				<div class="carousel-item">
+					<img src="./res/img/DSC_0048.JPG" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+					<h2>課程介紹</h2>
+	<!--				<p>年的信賴與品質</p>-->
+					</div>
 				</div>
-			</div>
-			<div class="carousel-item">
-				<img src="./res/img/tzd01.JPG" class="d-block w-100" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-				<h2>課程介紹</h2>
-<!--				<p>桃竹地區的最佳選擇</p>-->
+				<div class="carousel-item ">
+					<img src="./res/img/S15630561.jpg" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+					<h2>課程介紹</h2>
+	<!--					<p>包容.專業.安全.耐心</p>-->
+					</div>
 				</div>
-			</div>
+			
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -413,14 +414,14 @@ return`
 		 height:calc(100vw*0.4);
 	}
 		.carousel-item img{
-			filter: brightness(30%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
+			filter: brightness(50%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
 		}
 		
 	.carousel-caption{
 			/*bottom:32%;*/
 		}
 		.carousel-caption h2{
-			width:20%;
+			width:40%;
 			font-size:2rem;
 			/*border-bottom:1px solid #d3e3fc;*/
 			color:#fff;
@@ -455,7 +456,8 @@ return`
 			.temp_01 .row-banner:nth-child(2n) .banner-text{
 				margin:0 3rem 0 0;
 			}
-	.grid .section{
+	.col-9 .section p{
+		font-size:1rem;
 	}
 	@media only screen and (max-width: 767px) {
 		.medal .media-img{

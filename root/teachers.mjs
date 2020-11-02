@@ -14,7 +14,7 @@ return	`
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="./res/img/tz793.jpg" class="d-block w-100" alt="...">
+					<img src="./res/img/IMG_8555.JPG" class="d-block w-100" alt="..." style="transform: translate(-50%, -55%)">
 					<div class="carousel-caption d-none d-md-block justify-content-md-center" >
 						<h2>教練介紹</h2>
 <!--					<h4>教練介紹</h4>-->
@@ -22,7 +22,7 @@ return	`
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="./res/img/tz0143.JPG" class="d-block w-100" alt="...">
+					<img src="./res/img/team4.JPG" class="d-block w-100" alt="..." style="transform: translate(-50%, -45%)">
 					<div class="carousel-caption d-none d-md-block">
 							<h2>教練介紹</h2>
 	<!--				<h4>教練介紹</h4>-->
@@ -30,7 +30,7 @@ return	`
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="./res/img/tzd01.JPG" class="d-block w-100" alt="...">
+					<img src="./res/img/s01.jpg" class="d-block w-100" alt="..." style="transform: translate(-50%, -55%)">
 					<div class="carousel-caption d-none d-md-block">
 							<h2>教練介紹</h2>
 	<!--				<h4>教練介紹</h4>-->
@@ -235,14 +235,14 @@ return`
 		 height:calc(100vw*0.4);
 	}
 		.carousel-item img{
-			filter: brightness(30%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
+			filter: brightness(50%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
 		}
 		
 	.carousel-caption{
 			/*bottom:32%;*/
 		}
 		.carousel-caption h2{
-			width:20%;
+			width:40%;
 			font-size:2rem;
 			/*border-bottom:1px solid #d3e3fc;*/
 			color:#fff;

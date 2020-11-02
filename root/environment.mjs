@@ -13,27 +13,27 @@ return	`
 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="./res/img/tz793.jpg" class="d-block w-100" alt="..." >
-				<div class="carousel-caption d-none d-md-block">
-				<h2>環境設施</h2>
-<!--					<p>包容.專業.安全.耐心</p>-->
+				<div class="carousel-item active">
+					<img src="./res/img/cour01.jpg" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+					<h2>環境設施</h2>
+	<!--					<p>包容.專業.安全.耐心</p>-->
+					</div>
 				</div>
-			</div>
-			<div class="carousel-item">
-				<img src="./res/img/tz0143.JPG" class="d-block w-100" alt="..." >
-				<div class="carousel-caption d-none d-md-block">
-				<h2>環境設施</h2>
-<!--				<p>年的信賴與品質</p>-->
+				<div class="carousel-item">
+					<img src="./res/img/397828.jpg" class="d-block w-100" alt="..." >
+					<div class="carousel-caption d-none d-md-block">
+					<h2>環境設施</h2>
+	<!--				<p>年的信賴與品質</p>-->
+					</div>
 				</div>
-			</div>
-			<div class="carousel-item">
-				<img src="./res/img/tzd01.JPG" class="d-block w-100" alt="..." >
-				<div class="carousel-caption d-none d-md-block">
-				<h2>環境設施</h2>
-<!--				<p>桃竹地區的最佳選擇</p>-->
+				<div class="carousel-item">
+					<img src="./res/img/DSC_0055.JPG" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+					<h2>環境設施</h2>
+	<!--				<p>桃竹地區的最佳選擇</p>-->
+					</div>
 				</div>
-			</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -64,9 +64,9 @@ return	`
 			<div class="grid">
 				<div class="">
 					<div class="section left top" style="z-index: 1;">
-						<img src="./res/img/space/002.JPG">
+						<img src="./res/img/397828.jpg">
 						<div class="text"  style="width: 100%;">
-							<h3>現場實景</h3>
+							<h3>汽車考照區</h3>
 							<div class="faux-button">
 								<div class="plus-icon"></div>
 								<h5>更多資訊...</h5>
@@ -76,7 +76,7 @@ return	`
 						<div class="copy" style="opacity: 0; z-index: 0; width: 100%;">
 							<img class="close-icon" src="./res/img/delete-icon-black.png">
 		
-							<h3>第二考照區空拍圖</h3>
+							<h3>汽車考照區全景圖</h3>
 							<p >上坡起步，S彎道、路邊停車、倒車入庫</p>
 	<!--						<a href="" class="text-button-with-arrow">更多</a>-->
 							<!--/industries/agriculture-->
@@ -95,7 +95,7 @@ return	`
 		
 						<div class="copy" style="opacity: 0; z-index: 0; width: 100%;">
 							<img class="close-icon" src="./res/img/delete-icon-black.png">
-							<h3>道路駕駛</h3>
+							<h3>道路駕駛組</h3>
 							<p>道路駕駛車輛與教練</p>
 	<!--						<a href="./environment.html" class="text-button-with-arrow">更多</a>-->
 						</div>
@@ -105,7 +105,7 @@ return	`
 						<img src="./res/img/space/005.JPG">
 		
 						<div class="text">
-							<h3>現場實景</h3>
+							<h3>場內用車</h3>
 							<div class="faux-button">
 								<div class="plus-icon"></div>
 								<h5>更多資訊...</h5>
@@ -122,10 +122,10 @@ return	`
 					</div>
 		
 					<div class="section right bottom" style="z-index: 1;">
-						<img src="./res/img/space/001.JPG">
+						<img src="./res/img/space/DSC_0022.JPG">
 		
 						<div class="text">
-							<h3>現場實景</h3>
+							<h3>機車考照區</h3>
 							<div class="faux-button">
 								<div class="plus-icon"></div>
 								<h5>更多資訊...</h5>
@@ -134,14 +134,96 @@ return	`
 		
 						<div class="copy" style="opacity: 0; z-index: 0; width: 100%">
 							<img class="close-icon" src="./res/img/delete-icon-black.png">
-							<h3>第一考照區空拍圖</h3>
+							<h3>機車考照區全景圖</h3>
 							<p>普通重型機車、大型重型機車</p>
-	<!--						<a href="/environment.html" class="text-button-with-arrow">更多</a>-->
+							<a href="/environment" class="text-button-with-arrow">更多</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+<!--		<div class="jumbotron" style="background-color:transparent; height: fit-content;">-->
+<!--			<div class="grid">-->
+<!--				<div class="">-->
+<!--					<div class="section left top" style="z-index: 1;">-->
+<!--						<img src="./res/img/space/002.JPG">-->
+<!--						<div class="text"  style="width: 100%;">-->
+<!--							<h3>汽車考照區全景圖</h3>-->
+<!--							<div class="faux-button">-->
+<!--								<div class="plus-icon"></div>-->
+<!--								<h5>更多資訊...</h5>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--		-->
+<!--						<div class="copy" style="opacity: 0; z-index: 0; width: 100%;">-->
+<!--							<img class="close-icon" src="./res/img/delete-icon-black.png">-->
+<!--		-->
+<!--							<h3>汽車考照區全景圖</h3>-->
+<!--							<p >上坡起步，S彎道、路邊停車、倒車入庫</p>-->
+<!--	&lt;!&ndash;						<a href="" class="text-button-with-arrow">更多</a>&ndash;&gt;-->
+<!--							&lt;!&ndash;/industries/agriculture&ndash;&gt;-->
+<!--						</div>-->
+<!--					</div>-->
+<!--		-->
+<!--					<div class="section right top" style="z-index: 1;">-->
+<!--						<img src="./res/img/space/003.JPG">-->
+<!--						<div class="text">-->
+<!--							<h3>道路駕駛組</h3>-->
+<!--							<div class="faux-button">-->
+<!--								<div class="plus-icon"></div>-->
+<!--								<h5>更多資訊...</h5>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--		-->
+<!--						<div class="copy" style="opacity: 0; z-index: 0; width: 100%;">-->
+<!--							<img class="close-icon" src="./res/img/delete-icon-black.png">-->
+<!--							<h3>道路駕駛</h3>-->
+<!--							<p>道路駕駛車輛與教練</p>-->
+<!--	&lt;!&ndash;						<a href="./environment.html" class="text-button-with-arrow">更多</a>&ndash;&gt;-->
+<!--						</div>-->
+<!--					</div>-->
+<!--		-->
+<!--					<div class="section left bottom" style="z-index: 1;">-->
+<!--						<img src="./res/img/space/005.JPG">-->
+<!--		-->
+<!--						<div class="text">-->
+<!--							<h3>場內用車</h3>-->
+<!--							<div class="faux-button">-->
+<!--								<div class="plus-icon"></div>-->
+<!--								<h5>更多資訊...</h5>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--		-->
+<!--						<div class="copy" style="opacity: 0; z-index: 0; width: 100%;">-->
+<!--							<img class="close-icon" src="./res/img/delete-icon-black.png">-->
+<!--							<h3>場內用車</h3>-->
+<!--							<p>場內用車，道路駕駛用車</p>-->
+<!--	&lt;!&ndash;						<a href="./environment.html" class="text-button-with-arrow">更多</a>&ndash;&gt;-->
+<!--						</div>-->
+<!--		-->
+<!--					</div>-->
+<!--		-->
+<!--					<div class="section right bottom" style="z-index: 1;">-->
+<!--						<img src="./res/img/space/001.JPG">-->
+<!--		-->
+<!--						<div class="text">-->
+<!--							<h3>機車考照區全景圖</h3>-->
+<!--							<div class="faux-button">-->
+<!--								<div class="plus-icon"></div>-->
+<!--								<h5>更多資訊...</h5>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--		-->
+<!--						<div class="copy" style="opacity: 0; z-index: 0; width: 100%">-->
+<!--							<img class="close-icon" src="./res/img/delete-icon-black.png">-->
+<!--							<h3>機車考照區全景圖</h3>-->
+<!--							<p>普通重型機車、大型重型機車</p>-->
+<!--	&lt;!&ndash;						<a href="/environment.html" class="text-button-with-arrow">更多</a>&ndash;&gt;-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
 		<div class="jumbotron" style="background-color:transparent; height: fit-content;">
 			<div class="grid">
 				<div class="">
@@ -149,7 +231,7 @@ return	`
 						<img src="./res/img/space/770.jpg">
 		
 						<div class="text">
-							<h3>現場實景</h3>
+							<h3>電腦筆試區</h3>
 		
 							<div class="faux-button">
 								<div class="plus-icon"></div>
@@ -171,7 +253,7 @@ return	`
 						<img src="./res/img/space/771.jpg">
 		。
 						<div class="text">
-							<h3>現場實景</h3>
+							<h3>筆試練習區</h3>
 							<div class="faux-button">
 								<div class="plus-icon"></div>
 								<h5>更多資訊...</h5>
@@ -187,10 +269,10 @@ return	`
 					</div>
 		
 					<div class="section left bottom" style="z-index: 1;">
-						<img src="./res/img/space/725.jpg">
+						<img src="./res/img/space/9093.JPG">
 		
 						<div class="text">
-							<h3>現場實景</h3>
+							<h3>9人座小貨車</h3>
 							<div class="faux-button">
 								<div class="plus-icon"></div>
 								<h5>更多資訊...</h5>
@@ -199,18 +281,18 @@ return	`
 		
 						<div class="copy" style="opacity: 0; z-index: 0; width: 100%;">
 							<img class="close-icon" src="./res/img/delete-icon-black.png">
-							<h3>9人用小貨車</h3>
-							<p>9人用貨車</p>
+							<h3>9人座小貨車</h3>
+							<p>9人座貨車</p>
 	<!--						<a href="./environment.html" class="text-button-with-arrow">更多</a>-->
 						</div>
 		
 					</div>
 		
 					<div class="section right bottom" style="z-index: 1;">
-						<img src="./res/img/space/902.jpg">
+						<img src="./res/img/space/905.jpg">
 		
 						<div class="text">
-							<h3>現場實景</h3>
+							<h3>大型重型機車</h3>
 							<div class="faux-button">
 								<div class="plus-icon"></div>
 								<h5>更多資訊...</h5>
@@ -253,7 +335,7 @@ return	`
 					</div>
 		
 					<div class="section right top" style="z-index: 1;">
-						<img src="./res/img/space/903.jpg">
+						<img src="./res/img/DSC_0065.JPG">
 		。
 						<div class="text">
 							<h3>現場實景</h3>
@@ -292,7 +374,7 @@ return	`
 					</div>
 		
 					<div class="section right bottom" style="z-index: 1;">
-						<img src="./res/img/tz0143.JPG">
+						<img src="./res/img/IMG_8563.JPG">
 		
 						<div class="text">
 							<h3>場內用車</h3>
@@ -326,7 +408,16 @@ return`
 			box-shadow: 0 15px 15px 2px #ccc;
 			margin-top:112px;
 		}
+		.grid .text .faux-button {
+			position:absolute;
+			right:15%;
+			bottom:15%;
+		}
+			.grid .text .faux-button h5{
+				font-size:1rem;
+			}
 	}
+	
 	.carousel-content{
 		box-shadow: 0 15px 15px 2px #ccc;
 		margin-top:76px;
@@ -336,7 +427,7 @@ return`
 		 height:calc(100vw*0.4);
 	}
 		.carousel-item img{
-			filter: brightness(30%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
+			filter: brightness(50%); position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
 		}
 		
 	.carousel-caption{

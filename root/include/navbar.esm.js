@@ -54,15 +54,23 @@ return `
 								<a href="/environment" role="tab">環境設施</a>
 							</li>
 							<li class="nav-item">
+								<a href="/hint" role="tab">考照注意事項</a>
+							</li>
+							<li class="nav-item">
 								<a href="/teachers" role="tab">教練介紹</a>
 		<!--						<a href="knowledge.html" role="tab">教練介紹</a>-->
 		<!--						<a href="knowledge.html" role="tab">行車知識與模擬考試</a>-->
 							</li>
 							<li class="nav-item">
+								<a href="/relate" role="tab">模擬筆試與相關網站</a>
+							</li>
+							<li class="nav-item">
 								<a href="/pictures" role="tab">照片花絮</a>
 							</li>
 							<li class="nav-item">
-								<a href="/contect" role="tab">聯絡我們</a>
+								<a href="/message" role="tab">聯絡我們</a>
+<!--								<a href="/contect" role="tab">聯絡我們</a>-->
+
 							</li>
 						</ul>
 					</div>

@@ -184,19 +184,26 @@ export function FooterContent(){
 						</div>
 			</div>
 			<div class="row" id="footer">
-				<div>
-					<ul>
-						<li class="twitter">
-							<a href="">twitter</a>
-						</li>
-						<li class="facebook">
-							<a href="">facebook</a>
-						</li>
-						<li class="googleplus">
-							<a href="">googleplus</a>
-						</li>
-					</ul>
-					<p>&copy; Copyright 2020 All rights reserved by 太子駕訓班 Design by AugustusYu</p>
+				<div class="container ">
+					<div class="row justify-content-between">
+						<div class="col-md-4 col-12">
+							<ul>
+								<li class="twitter">
+									<a>twitter</a>
+								</li>
+								<li class="facebook">
+									<a>facebook</a>
+								</li>
+								<li class="googleplus">
+									<a>googleplus</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-8 col-12">
+							<p>&copy; Copyright 2020 All rights reserved by 太子駕訓班</p>
+<!--							 Design by AugustusYu-->
+						</div>
+					</div>
 				</div>
 			</div>
 		</footer>
