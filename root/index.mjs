@@ -576,7 +576,6 @@ function PageContent(page_name) {
         });
     </script>
 	
-	</body>
 	</html>
 `;
 }

@@ -2230,3 +2230,64 @@ Unhandled rejection is received!
 [90mObtaining kernel info...[39m
 [90mLoading configurations...[39m
 [90mLoading configurations...[39m
+(node:20252) ExperimentalWarning: The ESM module loader is experimental.
+(node:20252) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:18932) ExperimentalWarning: The ESM module loader is experimental.
+(node:18932) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:16928) ExperimentalWarning: The ESM module loader is experimental.
+(node:16928) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:23504) ExperimentalWarning: The ESM module loader is experimental.
+(node:23504) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:24872) ExperimentalWarning: The ESM module loader is experimental.
+(node:24872) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:25588) ExperimentalWarning: The ESM module loader is experimental.
+(node:25588) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:20656) ExperimentalWarning: The ESM module loader is experimental.
+(node:20656) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+Unhandled rejection is received!
+    Error: fetch is not defined
+    Stack: {
+        FetchMsgList (file:///E:/purimize/CP/NodeSRC/PrinceDrivingSchool/root/admin/index.mjs:45:2)
+        default (file:///E:/purimize/CP/NodeSRC/PrinceDrivingSchool/root/admin/index.mjs:52:25)
+        HandleDynamicView (file:///E:/purimize/CP/NodeSRC/PrinceDrivingSchool/handler/dispatcher.esm.js:138:9)
+        async file:///E:/purimize/CP/NodeSRC/PrinceDrivingSchool/node_modules/extes/function.esm.js:74:16
+    }
+(node:4464) ExperimentalWarning: The ESM module loader is experimental.
+(node:4464) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+Unhandled rejection is received!
+    Error: fetch is not defined
+    Stack: {
+        FetchMsgList (file:///E:/purimize/CP/NodeSRC/PrinceDrivingSchool/root/admin/index.mjs:45:2)
+        default (file:///E:/purimize/CP/NodeSRC/PrinceDrivingSchool/root/admin/index.mjs:53:25)
+        HandleDynamicView (file:///E:/purimize/CP/NodeSRC/PrinceDrivingSchool/handler/dispatcher.esm.js:138:9)
+        async file:///E:/purimize/CP/NodeSRC/PrinceDrivingSchool/node_modules/extes/function.esm.js:74:16
+    }
+(node:14292) ExperimentalWarning: The ESM module loader is experimental.
+(node:14292) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
