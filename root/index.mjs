@@ -50,15 +50,11 @@ function PageContent(page_name) {
 			</div>
 		</div>
 		
-
-<!--		<div class="navbar-left t-center v-center">-->
-<!--			<marquee class="index_marq " onMouseOver="this.stop()" onMouseOut="this.start()" style="color:#ec3939;">因配合政府新冠肺炎全國三級警戒防疫措施，訓練班停課再延長至7/12，所有開課日期皆順延。請隨時關注衛福部疫情動向 造成不便敬請見諒。</marquee>-->
-<!--		</div>-->
 	<!--未分類-->
 	<div class="temp_01" style="overflow:hidden">
 		<div class="container ">
 			<div class="row justify-content-center" >
-				<div class="banner-text temp_01 index_04 banner animate__animated animate__fadeIn" style="animation-duration: 2.0s ;padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start; border: solid #0D7496;">
+				<div class="banner-text temp_01 index_04 banner animate__animated animate__fadeIn" style="animation-duration: 2.5s ;padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start;">
 					<h1 style="font-size:3rem;border-bottom:2px solid #0D7496; color:#0D7496;font-weight:bold;padding-bottom:0.2rem;">太子駕訓班</h1>
 					<h5>桃竹駕訓的最優選擇</h5>
 				</div>
@@ -421,13 +417,10 @@ function PageContent(page_name) {
 <!--				<div class="media-img col-md-2 col-6">-->
 <!--					<img class="img-fluid" src="./res/img/medal/005a.jpg" alt="獎章5">-->
 <!--				</div>-->
-				<div class="swiper-container-medal">
+				<div class="swiper-container">
 					<div class="swiper-wrapper">
-						
 						<div class="swiper-slide" style="background-image:url('./res/img/medal/DSC_0003.JPG')"></div>
 						<div class="swiper-slide" style="background-image:url('./res/img/medal/DSC_0010a.jpg')"></div>
-						<div class="swiper-slide" style="background-image:url('./res/img/medal/ne2021.jpg')"></div>
-						<div class="swiper-slide" style="background-image:url('./res/img/medal/f102.jpg')"></div>
 						<div class="swiper-slide" style="background-image:url('./res/img/medal/DSC_0008.JPG')"></div>
 						<div class="swiper-slide" style="background-image:url('./res/img/medal/DSC_0004.JPG')"></div>
 						<div class="swiper-slide" style="background-image:url('./res/img/medal/004a.jpg')"></div>
@@ -440,20 +433,123 @@ function PageContent(page_name) {
 		</div>
 	</section>
 	
-
+	
+<!--	<section class="test-content">-->
+<!--		<div class="swiper-container">-->
+<!--		  <div class="swiper-wrapper">-->
+<!--			<div class="swiper-slide" style="background-image:url('https://picsum.photos/300/300?random1')"></div>-->
+<!--			<div class="swiper-slide" style="background-image:url('https://picsum.photos/300/300?random2')"></div>-->
+<!--			<div class="swiper-slide" style="background-image:url('https://picsum.photos/300/300?random3')"></div>-->
+<!--			<div class="swiper-slide" style="background-image:url('https://picsum.photos/300/300?random4')"></div>-->
+<!--			<div class="swiper-slide" style="background-image:url('https://picsum.photos/300/300?random5')"></div>-->
+<!--		  </div>-->
+<!--		</div>-->
+<!--	</section>-->
+<!--	-->
+<!--	<section>-->
+<!--&lt;!&ndash;	 <div class="container">&ndash;&gt;-->
+<!--&lt;!&ndash;		<div class="row">&ndash;&gt;-->
+<!--	  		<div class="news-area">-->
+<!--				<div class="triangle-area">-->
+<!--					<div class="news-txt-area grid-container">-->
+<!--						<div class="title"><p class="large">最新消息</p></div>-->
+<!--						<div class="sub-title"><p class="middle">NEWS</p></div>-->
+<!--						<div class="card-content">-->
+<!--							<div class="news-swiper">-->
+<!--								<div class="swiper-wrapper">-->
+<!--									<div class="swiper-slide">-->
+<!--										<a href="">-->
+<!--										<div class="slide-box">-->
+<!--											<div class="image">-->
+<!--												<img src="./res/img/medal/001a.jpg">-->
+<!--											</div>-->
+<!--											<div class="line"></div>-->
+<!--											<div class="date "><p class="normal"></p></div>-->
+<!--											<div class="title"><p class="normal"></p></div>-->
+<!--											<div class="content "><p class="normal"></p></div>-->
+<!--										</div>-->
+<!--										</a>-->
+<!--									</div>-->
+<!--									-->
+<!--									 <div class="swiper-slide">-->
+<!--										<a href="">-->
+<!--										<div class="slide-box">-->
+<!--											<div class="image">-->
+<!--												<img src="./res/img/medal/002a.jpg">-->
+<!--											</div>-->
+<!--											<div class="line"></div>-->
+<!--											<div class="date "><p class="normal"></p></div>-->
+<!--											<div class="title"><p class="normal"></p></div>-->
+<!--											<div class="content "><p class="normal"></p></div>-->
+<!--										</div>-->
+<!--										</a>-->
+<!--									</div>-->
+<!--									-->
+<!--									 <div class="swiper-slide">-->
+<!--										<a href="">-->
+<!--										<div class="slide-box">-->
+<!--											<div class="image">-->
+<!--												<img src="./res/img/medal/003a.jpg">-->
+<!--											</div>-->
+<!--											<div class="line"></div>-->
+<!--											<div class="date "><p class="normal"></p></div>-->
+<!--											<div class="title"><p class="normal"></p></div>-->
+<!--											<div class="content "><p class="normal"></p></div>-->
+<!--										</div>-->
+<!--										</a>-->
+<!--									</div>-->
+<!--									-->
+<!--									 <div class="swiper-slide">-->
+<!--										<a href="">-->
+<!--										<div class="slide-box">-->
+<!--											<div class="image">-->
+<!--												<img src="./res/img/medal/004a.jpg">-->
+<!--											</div>-->
+<!--											<div class="line"></div>-->
+<!--											<div class="date "><p class="normal"></p></div>-->
+<!--											<div class="title"><p class="normal"></p></div>-->
+<!--											<div class="content "><p class="normal"></p></div>-->
+<!--										</div>-->
+<!--										</a>-->
+<!--									</div>-->
+<!--		-->
+<!--								</div>-->
+<!--								&lt;!&ndash; Arrows &ndash;&gt;-->
+<!--								<div class="swiper-button-next">-->
+<!--									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44">-->
+<!--										<path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z">-->
+<!--									</svg>-->
+<!--								</div>-->
+<!--								<div class="swiper-button-prev">-->
+<!--									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44">-->
+<!--										<path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z">-->
+<!--									</svg>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--						<div class="news-more">-->
+<!--							<a href="news_list.php">-->
+<!--								<p class="middle-down">觀看全部-->
+<!--									<br> VIEW ALL-->
+<!--								</p>-->
+<!--							</a>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--&lt;!&ndash;    	</div>&ndash;&gt;-->
+<!--&lt;!&ndash;	 </div>&ndash;&gt;-->
+<!--&lt;!&ndash;	&ndash;&gt;-->
+<!--	</section>-->
+<!--	-->
 	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-       const mySwiper = new Swiper('.swiper-container-medal', {
+       const mySwiper = new Swiper('.swiper-container', {
 		  effect: 'coverflow',
 		  slidesPerView: 'auto',
 		  centeredSlides: true,
 		  initialSlide:2,
-		  loop:true,
-          speed: 800,
-
-          
-          autoplay : true,
 		});
 		
 		var swiper_news = new Swiper('.news-swiper', {
@@ -505,9 +601,8 @@ return`
 		min-height: 500px;
 		background-color: #eee;
 	}
-	.swiper-container-medal {
+	.swiper-container {
 		  width: 100%;
-		  overflow: hidden;
 		}
 		
 		.swiper-slide {
@@ -517,7 +612,7 @@ return`
 		  background-position: center center;
 		  background-size: cover;
 		}
-	.swiper-container-medal .swiper-wrapper{
+	.swiper-container .swiper-wrapper{
 		display: flex;
 	}
 	.swiper-slide .slide-box .image img{
@@ -562,14 +657,6 @@ return`
 				margin:0 3rem 0 0;
 			}
 	.grid .section{
-	}
-	
-	/* index marq */
-	.index_marq{
-		padding:1rem 0;
-		background-color:#F4F4F4;
-		font-size:1.8rem;
-		font-weight:bold;
 	}
 	@media only screen and (max-width: 767px) {
 		.medal .media-img{
