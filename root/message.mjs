@@ -51,12 +51,12 @@ function PageContent(req, page_name) {
 		</div>
 		
 
-	<!--<div class='section'>\${MsgBoard(req.info.url.path)}</div>-->
+	<div class='section'>${MsgBoard(req.info.url.path)}</div>
 	<div class="temp_01" style="padding-top:40px!important;padding-bottom:40px!important;">
 		<div class="container  ">
 			<div class="row justify-content-center" >
 				<div class="banner-text temp_01 index_04 banner" style="background-color:d3e3fc!important; padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start">
-					<h1 style="font-size:3rem;border-bottom:2px solid #0D7496; color:#0D7496;font-weight:bold;padding-bottom:0.2rem;">留言交流區</h1>
+					<h1 style="font-size:3rem;border-bottom:2px solid #0D7496; color:#0D7496;font-weight:bold;padding-bottom:0.2rem;">本場位置</h1>
 					<h4 style="text-align:center;width:100%">太子駕訓</h4>
 				</div>
 			</div>
