@@ -18,24 +18,24 @@ function PageContent(req, page_name) {
 				</ol>
 				<div class="carousel-inner">
 				<div class="carousel-item active">
-						<img src="./res/img/397828.jpg" class="d-block w-100" alt="..." >
+						<img src="./res/img/tz793.jpg" class="d-block w-100" alt="..." >
 						<div class="carousel-caption d-none d-md-block">
-						<h2>太子駕訓班</h2>
-<!--						<p class="animate__animated animate__zoomIn">包容.專業.安全.耐心</p>-->
+						<h4 class="animate__animated animate__zoomIn">太子駕訓班</h4>
+						<p class="animate__animated animate__zoomIn">包容.專業.安全.耐心</p>
 						</div>
 				</div>
 				<div class="carousel-item">
-					<img src="./res/img/IMG_8554.JPG" class="d-block w-100" alt="..." style="transform: translate(-50%, -60%)">
+					<img src="./res/img/tz0143.JPG" class="d-block w-100" alt="..." >
 					<div class="carousel-caption d-none d-md-block">
-					<h2>太子駕訓班</h2>
-<!--					<p>30年的信賴與品質</p>-->
+					<h4>太子駕訓班</h4>
+					<p>30年的信賴與品質</p>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="./res/img/cour02.jpg" class="d-block w-100" alt="..." style="transform: translate(-50%, -55%)">
+					<img src="./res/img/tzd01.JPG" class="d-block w-100" alt="..." >
 					<div class="carousel-caption d-none d-md-block">
-					<h2>太子駕訓班</h2>
-<!--					<p>桃竹地區的最佳選擇</p>-->
+					<h4>太子駕訓班</h4>
+					<p>桃竹地區的最佳選擇</p>
 					</div>
 				</div>
 				</div>
@@ -52,21 +52,7 @@ function PageContent(req, page_name) {
 		
 
 	<!--<div class='section'>\${MsgBoard(req.info.url.path)}</div>-->
-	<div class="temp_01" style="padding-top:40px!important;padding-bottom:40px!important;">
-		<div class="container  ">
-			<div class="row justify-content-center" >
-				<div class="banner-text temp_01 index_04 banner" style="background-color:d3e3fc!important; padding:1rem 80px 1rem 80px; display:flex;flex-direction:column;justify-content:center;align-items:start">
-					<h1 style="font-size:3rem;border-bottom:2px solid #0D7496; color:#0D7496;font-weight:bold;padding-bottom:0.2rem;">留言交流區</h1>
-					<h4 style="text-align:center;width:100%">太子駕訓</h4>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	
-	
-	
-	<div class='section' style="margin-top:3rem;margin-bottom:3rem;">${ MsgBoard("/index01test") }</div>
+	<div class='section'>${ MsgBoard("/index01test") }</div>
 
 	
 	</body>
@@ -76,37 +62,15 @@ function PageContent(req, page_name) {
 function PageStyle(){
 return`
 	<style>
-	@media (min-width:992px){
-		.carousel-content{
-			box-shadow: 0 15px 15px 2px #ccc;
-			margin-top:112px;
-		}
-	}
 	.carousel-content{
 		box-shadow: 0 15px 15px 2px #ccc;
-		margin-top:76px;
 	}
 	.carousel-item{
 		 overflow:hidden;
-		 height:calc(100vw*0.4);
+		 height:calc(100vw*0.6);
 	}
-		.carousel-caption h2{
-			width:40%;
-			font-size:2rem;
-			/*border-bottom:1px solid #d3e3fc;*/
-			color:#fff;
-			font-weight:bold;
-			padding-bottom:0.2rem;
-			margin:0 auto 0.5rem auto;
-		}
-		.carousel-caption h4{
-			text-align:center;
-			width:100%;
-			color:#d3e3fc;
-		}
-	
 		.carousel-item img{
-			filter: brightness(50%); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+			filter: brightness(90%); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
 		}
 	.temp_01{
 		padding-top:40px!important;
@@ -139,7 +103,7 @@ return`
 	@media only screen and (min-width: 1200px) {
 		.carousel-item{
 			 overflow:hidden;
-			 height:calc(100vw*0.66*0.4);
+			 height:calc(100vw*0.66*0.6);
 		}
 			.carousel-item img{
 				top:30%;

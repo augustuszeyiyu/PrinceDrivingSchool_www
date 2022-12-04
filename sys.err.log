@@ -2291,3 +2291,171 @@ Unhandled rejection is received!
 [90mObtaining kernel info...[39m
 [90mLoading configurations...[39m
 [90mLoading configurations...[39m
+(node:7876) ExperimentalWarning: The ESM module loader is experimental.
+(node:7876) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:9916) ExperimentalWarning: The ESM module loader is experimental.
+(node:9916) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+Unhandled rejection is received!
+    Error: MsgBoard is not defined
+    Stack: {
+        PageContent (file:///E:/purimize/CP/NodeSRC/root/admin/index.mjs:9:2)
+        default (file:///E:/purimize/CP/NodeSRC/root/admin/index.mjs:72:11)
+        HandleDynamicView (file:///E:/purimize/CP/NodeSRC/handler/dispatcher.esm.js:138:9)
+        async file:///E:/purimize/CP/NodeSRC/node_modules/extes/function.esm.js:74:16
+    }
+(node:23324) ExperimentalWarning: The ESM module loader is experimental.
+(node:23324) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:25508) ExperimentalWarning: The ESM module loader is experimental.
+(node:25508) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:5868) ExperimentalWarning: The ESM module loader is experimental.
+(node:5868) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:14468) ExperimentalWarning: The ESM module loader is experimental.
+(node:14468) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:16476) ExperimentalWarning: The ESM module loader is experimental.
+(node:16476) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:11920) ExperimentalWarning: The ESM module loader is experimental.
+(node:11920) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:25672) ExperimentalWarning: The ESM module loader is experimental.
+(node:25672) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:27452) ExperimentalWarning: The ESM module loader is experimental.
+(node:27452) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:22012) ExperimentalWarning: The ESM module loader is experimental.
+(node:22012) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:27256) ExperimentalWarning: The ESM module loader is experimental.
+(node:27256) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:19124) ExperimentalWarning: The ESM module loader is experimental.
+(node:19124) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:28144) ExperimentalWarning: The ESM module loader is experimental.
+(node:28144) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:22704) ExperimentalWarning: The ESM module loader is experimental.
+(node:22704) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:20960) ExperimentalWarning: The ESM module loader is experimental.
+(node:20960) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:2560) ExperimentalWarning: The ESM module loader is experimental.
+(node:2560) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:4024) ExperimentalWarning: The ESM module loader is experimental.
+(node:4024) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:24804) ExperimentalWarning: The ESM module loader is experimental.
+(node:24804) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:22444) ExperimentalWarning: The ESM module loader is experimental.
+(node:22444) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:26896) ExperimentalWarning: The ESM module loader is experimental.
+(node:26896) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:15152) ExperimentalWarning: The ESM module loader is experimental.
+(node:15152) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:25340) ExperimentalWarning: The ESM module loader is experimental.
+(node:25340) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:9156) ExperimentalWarning: The ESM module loader is experimental.
+(node:9156) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:5412) ExperimentalWarning: The ESM module loader is experimental.
+(node:5412) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:8796) ExperimentalWarning: The ESM module loader is experimental.
+(node:8796) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:20900) ExperimentalWarning: The ESM module loader is experimental.
+(node:20900) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:12920) ExperimentalWarning: The ESM module loader is experimental.
+(node:12920) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:11000) ExperimentalWarning: The ESM module loader is experimental.
+(node:11000) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:23192) ExperimentalWarning: The ESM module loader is experimental.
+(node:23192) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:7420) ExperimentalWarning: The ESM module loader is experimental.
+(node:7420) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m
+(node:21528) ExperimentalWarning: The ESM module loader is experimental.
+(node:21528) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+[90mObtaining kernel info...[39m
+[90mLoading configurations...[39m
+[90mLoading configurations...[39m

@@ -4,7 +4,6 @@
  *	Author: AugustusYu
  *	Create: 2020/11/02
 **/
-import MsgBoard from "/root/include/message-board.esm.js";
 
 function PageContent(page_name) {
 	return`
@@ -16,9 +15,6 @@ function PageContent(page_name) {
 					<h2 class="" style="font-weight:bolder;color:darkgrey;font-size:2.5rem;margin: 1rem 0 1rem 0;line-height: 4rem;">後台</h2>
 				</div>
 			</div>
-		</div>
-		<div>
-			${ MsgBoard("/index01test") }
 		</div>
 	</div>
 	

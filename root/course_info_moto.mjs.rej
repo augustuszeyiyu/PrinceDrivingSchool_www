@@ -1,0 +1,88 @@
+diff a/root/course_info_moto.mjs b/root/course_info_moto.mjs	(rejected hunks)
+@@ -3,10 +3,86 @@
+ import {NavContent} from "./include/navbar.esm.js";
+ import {FooterContent} from "./include/footer.esm.js";
+ import {BuildTemplate} from "/lib/tiny-tmpl.esm.js";
++import reader  from 'fs';
++import XLSX from 'xlsx';
+ 
++const  parse_XLSX = (filename) => {
++	const excelData = XLSX.readFile(filename);
++	return Object.keys(excelData.Sheets).map( (name) =>({
++	  name,
++	  data: XLSX.utils.sheet_to_json(excelData.Sheets[name],{header:1}),
++	   // data: XLSX.utils.sheet_to_json(excelData.Sheets[name],{header:1}),
++	}));
++};
++const course_data = {} ,course_data_1 = {}, course_data_2 = {}, course_data_3 = {}, course_data_4 = {};
++var insert_course_data_1='',insert_course_data_2='',insert_course_data_3='',insert_course_data_4 ='';
++    parse_XLSX("./root/112car.xlsx").forEach((element) => {
++    
++		(element.data).forEach((insert_da)=>{
++			if(insert_da[3]<4 && (typeof insert_da[3] == "number")){
++    			course_data_1[insert_da[1]]= insert_da;
++    			insert_course_data_1 = insert_course_data_1+"<div class=\"t-row\">"+"<div class=\"t-column\">"+ insert_da[0]+ "</div>"+
++    			"<div class=\"t-column\">"+"<p>"+ insert_da[1]+" &emsp;:&emsp;</p>"+"</div>"+
++    			"<div class=\"t-column\">" +insert_da[2]+"/"+ insert_da[3]+"/"+insert_da[4]+"</div>"+
++    			"<div class=\"t-column\">" +insert_da[5]+"/"+ insert_da[6]+"/"+insert_da[7]+"</div>"+
++    			"<div class=\"t-column\"></div>"+
++    			"</div>";
++			}
++			else if(insert_da[3]>=4 && insert_da[3]<7){
++    			course_data_2[insert_da[1]]= insert_da;
++    			insert_course_data_2 = insert_course_data_2+"<div class=\"t-row\">"+"<div class=\"t-column\">"+ insert_da[0]+ "</div>"+
++    			"<div class=\"t-column\">"+"<p>"+ insert_da[1]+" &emsp;:&emsp;</p>"+"</div>"+
++    			"<div class=\"t-column\">" +insert_da[2]+"/"+ insert_da[3]+"/"+insert_da[4]+"</div>"+
++    			"<div class=\"t-column\">" +insert_da[5]+"/"+ insert_da[6]+"/"+insert_da[7]+"</div>"+
++    			"<div class=\"t-column\"></div>"+
++    			"</div>";
++			}
++			else if(insert_da[3]>=7 && insert_da[3]<10){
++    			course_data_3[insert_da[1]]= insert_da;
++    			insert_course_data_3 = insert_course_data_3+"<div class=\"t-row\">"+"<div class=\"t-column\">"+ insert_da[0]+ "</div>"+
++    			"<div class=\"t-column\">"+"<p>"+ insert_da[1]+" &emsp;:&emsp;</p>"+"</div>"+
++    			"<div class=\"t-column\">" +insert_da[2]+"/"+ insert_da[3]+"/"+insert_da[4]+"</div>"+
++    			"<div class=\"t-column\">" +insert_da[5]+"/"+ insert_da[6]+"/"+insert_da[7]+"</div>"+
++    			"<div class=\"t-column\"></div>"+
++    			"</div>";
++			}
++			else if(insert_da[3]<=12){
++    			course_data_4[insert_da[1]]= insert_da;
++    			insert_course_data_4 = insert_course_data_4+"<div class=\"t-row\">"+"<div class=\"t-column\">"+ insert_da[0]+ "</div>"+
++    			"<div class=\"t-column\">"+"<p>"+ insert_da[1]+" &emsp;:&emsp;</p>"+"</div>"+
++    			"<div class=\"t-column\">" +insert_da[2]+"/"+ insert_da[3]+"/"+insert_da[4]+"</div>"+
++    			"<div class=\"t-column\">" +insert_da[5]+"/"+ insert_da[6]+"/"+insert_da[7]+"</div>"+
++    			"<div class=\"t-column\"></div>"+
++    			"</div>";
++			}
++    	});
++    	// if(4<= element.data[3]<7){
++    	// 	course_data_2.data= element.data;
++    	// };
++    	// console.log(element.data);
++    });
++console.log(insert_course_data_1);
+ 
++// <div class="t-row">
++// 							<div class="t-column">2</div>
++// 							<div class="t-column">
++// 								<p>962 &emsp;:&emsp;</p>
++// 								<p style="color:red">368</p>
++// 							</div>
++// 							<div class="t-column">111/01/12</div>
++// 							<div class="t-column">111/01/18</div>
++// 							<div class="t-column"></div>
++// 						</div>
+ 
+ function PageContent(){
++
++	const result_data = { TEst:123, GG:775};
++	// const book  = XLSX.utils.book_new();
++	// XLSX.utils.book_append_sheet(book, result_data, "會員升級");
++	//
++	// const buffer = XLSX.write(book, {type:'buffer', bookType:'xlsx'});
++console.log("123");
++
+ return`
+ 	<div class="carousel-content">
+ 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
